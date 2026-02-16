@@ -1,0 +1,145 @@
+split_cv_task:
+  description: >
+    ANALYSE EXTRÊMEMENT RAPIDE REQUISE.
+    Ton objectif unique est de découper le texte brut du CV en blocs JSON.
+    Ne résume pas. Ne reformule pas. Copie-colle le texte brut dans les sections correspondantes.
+    
+    TEXTE DU CV : 
+    "{cv_content}"
+
+    RÈGLES STRICTES :
+    1. "experiences": Contient UNIQUEMENT les blocs parlant d'historique professionnel (Entreprise, Poste, Dates).
+    2. "projects": Contient UNIQUEMENT les sections explicitement titrées "Projets" ou les descriptions de projets académiques/personnels distincts. SI PAS DE SECTION PROJET, LAISSER VIDE. Ne pas inventer.
+    3. "skills": Contient les listes de compétences, langages, outils.
+    4. "education": Contient les diplômes et formations.
+    5. "languages": Contient les langues mentionnées (Français, Anglais, etc.) avec éventuellement leur niveau.
+    6. "personal_info": Contient les informations personnelles (Prénom).
+  expected_output: >
+    Un objet JSON valide strictement structuré ainsi :
+    {{
+      "experiences": "texte brut...",
+      "projects": "texte brut...",
+      "education": "texte brut...",
+      "skills": "texte brut...",
+      "languages": "texte brut...",
+      "personal_info": "texte brut..."
+    }}
+
+
+skills_task:
+  description: >
+    Analyse les sections suivantes pour lister les compétences avec leur contexte d'utilisation.
+    Expériences : {experiences}
+    Projets : {projects}
+    academique : {education}
+    Skills Explicit : {skills}
+    
+    RÈGLES DE CLASSIFICATION :
+    1. 'hard_skills' : Outils, langages, technos (ex: Python, SQL, Excel, React, FastAPI, LangChain).
+       IMPORTANT: Inclure TOUTES les technologies mentionnées dans les projets, expériences et académique.
+    2. 'soft_skills' : Qualités humaines (ex: Leadership, Communication, Rigueur).
+    3. NE PAS INVENTER. Si ce n'est pas écrit, ne l'ajoute pas.
+    4. Pour chaque skill, indique si elle est présente dans une expérience, un projet, academique, sans contexte, si elle est presente dans plusieurs section indique le .
+  expected_output: >
+    JSON : {{
+      "hard_skills": ["Python", "SQL", "FastAPI"],
+      "soft_skills": ["Rigueur", "Leadership"],
+      "skills_with_context": [
+        {{"skill": "Python", "context": "projet"}},
+        {{"skill": "FastAPI", "context": "entreprise"}}
+      ]
+    }}
+
+experience_task:
+  description: >
+    Tu es un extracteur de données strict. Analyse ce texte d'expérience :
+    "{experiences}"
+    
+    Pour CHAQUE poste identifié :
+    1. Titre du poste
+    2. Nom de l'entreprise
+    3. Dates (Début - Fin)
+    4. Description (Liste des tâches/responsabilités)
+    
+    RÈGLE : Ne confonds PAS les projets scolaires avec des expériences pro. Les stages et alternances SONT des expériences.
+  expected_output: >
+    Liste JSON : [{{"Poste": "...", "Entreprise": "...", "start_date": "...", "end_date": "...", "responsabilités": ["task 1", "task 2"]}}]
+
+project_task:
+  description: >
+    Analyse ce texte de projets : "{projects}"
+    
+    RÈGLES STRICTES DE STRUCTURE :
+    Chaque projet DOIT avoir exactement ces clés :
+    - "title" : Titre du projet
+    - "technologies" : Liste de strings (Ex: ["Python", "React"])
+    - "outcomes" : Liste de strings décrivant les résultats ou fonctionnalités (Ex: ["Appli déployée", "User base x2"])
+    - "domaine metier" : (exemple un projet en lien avec la recommandation d'emploi est classé comme recrutement/RH)
+    
+    Sépare :
+    - "professional" : Projets réalisés en entreprise (distincts du simple poste).
+    - "personal" : Projets perso, Github, Hackathons, Écoles.
+    
+    Si une liste est vide, renvoie [].
+  expected_output: >
+    JSON : {{
+      "professional": [
+        {{ "title": "Data Jobs", "technologies": ["Python", "API"], "outcomes": ["App crée", "Optimisation X"], "domaine metier": "recrutement/RH" }}
+      ], 
+      "personal": []
+    }}
+
+education_task:
+  description: >
+    Analyse la section education : "{education}"
+    Extrait les diplômes.
+  expected_output: >
+    Liste JSON : [{{"degree": "...", "institution": "...", "start_date": "...", "end_date": "..."}}]
+
+reconversion_task:
+  description: >
+    Analyse les expériences : "{experiences}"
+    Et "{education}"
+    Le candidat est-il en reconversion ? (Changement majeur de domaine récent).
+    indique aussi le contexte (de quelle domaine ou poste vient t'il et quelle est sa réortientation)
+    pour le contexte de reconversion tu dois prendre en compte les experience et les education.
+  expected_output: >
+    JSON : {{"reconversion_analysis": {{"is_reconversion": true/false, "context": "..."}}
+
+etudiant_task:
+  description: >
+    Analyse la section education : "{education}"
+    Nous sommes le {current_date}.
+    Le candidat est-il ACTUELLEMENT étuditant ? 
+    CRITÈRES :
+    1. Regarde les dates de fin des formations.
+    2. Identifie la date de fin de la formation la plus récente.
+    3. Si cette date est FUTURE par rapport à {current_date} ou si c'est écrit "En cours" / "Présent", alors is_etudiant = true.
+    4. Récupère explicitement cette date sous le champ 'latest_education_end_date' (format YYYY-MM-DD ou MM/YYYY ou "Present").
+    5. indique aussi le niveau d'études (ex: bac+2, bac+5) du diplome le plus proche de {current_date}.
+    6. indique la spécialité exemple: ingenieur IA, data analyste, devellopeur frontend, etc.
+  expected_output: >
+    JSON : {{"etudiant_analysis": {{"is_etudiant": true/false, "niveau_etudes": "bac+5", "specialite": "data analyste", "latest_education_end_date": "YYYY-MM-DD"}}}}
+
+language_task:
+  description: >
+    Analyse le texte suivant pour identifier les langues parlées par le candidat.
+    SECTION LANGUES : "{languages}"
+    
+    RÈGLES :
+    1. Identifie chaque langue mentionnée dans la SECTION LANGUES.
+    2. Si la SECTION LANGUES est vide : le candidat parle au moins la LANGUE DU CV.
+  expected_output: >
+    JSON : {{"langues": [{{"langue": "Anglais"}}]}}
+
+identity_task:
+  description: >
+    Analyse le texte suivant pour extraire UNIQUEMENT le prénom du candidat.
+    SECTION INFO PERSO : "{personal_info}"
+    
+    RÈGLES :
+    1. Identifie le prénom du candidat.
+    2. Si plusieurs noms sont présents, essaie de déduire le prénom principal.
+    3. Si introuvable, renvoie une chaîne vide ou null.
+  expected_output: >
+    JSON : {{"first_name": "Jean"}}
