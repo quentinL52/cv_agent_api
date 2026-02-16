@@ -20,4 +20,3 @@ httpx==0.28.1
 langtrace-python-sdk
 sentence-transformers
 setuptools<70.0.0
-uvicorn
