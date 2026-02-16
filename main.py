@@ -11,7 +11,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.services.cv_service import parse_cv
 from langtrace_python_sdk import langtrace
 
-langtrace.init(api_key=os.getenv("LANGTRACE_API_KEY"))
+# Optional: Langtrace initialization
+LANGTRACE_API_KEY = os.getenv("LANGTRACE_API_KEY")
+if LANGTRACE_API_KEY:
+    langtrace.init(api_key=LANGTRACE_API_KEY)
+else:
+    logger.warning("LANGTRACE_API_KEY not found. Langtrace tracing is disabled.")
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

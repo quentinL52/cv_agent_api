@@ -1,5 +1,14 @@
 FROM python:3.11-slim
 
+# Force stdout and stderr to be sent straight to terminal without buffering
+ENV PYTHONUNBUFFERED=1
+
+# Installer les dépendances système nécessaires pour PyMuPDF et autres
+RUN apt-get update && apt-get install -y \
+    libgl1 \
+    libglib2.0-0 \
+    && rm -rf /var/lib/apt/lists/*
+
 # Créer l'utilisateur
 RUN useradd -m -u 1000 user
 USER user
