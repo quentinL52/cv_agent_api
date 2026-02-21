@@ -4,9 +4,12 @@ import tempfile
 import uuid
 from langtrace_python_sdk import inject_additional_attributes
 
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Request
 
 from fastapi.middleware.cors import CORSMiddleware
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 from src.services.cv_service import parse_cv
 from langtrace_python_sdk import langtrace
@@ -41,6 +44,10 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
+
 from pydantic import BaseModel
 
 class HealthCheck(BaseModel):
@@ -51,16 +58,17 @@ async def health_check():
     return HealthCheck()
 
 @app.post("/parse-cv/", tags=["CV Parsing"])
-async def parse_cv_endpoint(
-    file: UploadFile = File(...)
-):
+@limiter.limit("5/minute")
+async def parse_cv_endpoint(request: Request, file: UploadFile = File(...)):
     """
-    Parses a CV file (PDF) and returns the parsed data.
+    Point d'entrée principal pour le parsing de CV.
     """
     if file.content_type != "application/pdf":
         raise HTTPException(status_code=400, detail="PDF file required")
 
     contents = await file.read()
+    if len(contents) > 800 * 1024:
+        raise HTTPException(status_code=413, detail="File too large. Maximum size is 800 KB.")
 
 
     with tempfile.NamedTemporaryFile(delete=False, suffix=".pdf") as tmp:
