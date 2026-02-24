@@ -1,10 +1,12 @@
 """
 Orchestrateur CV enrichi avec 3 phases :
-  Phase 1 : Découpage du CV en sections
-  Phase 2 : Extraction parallèle (8 agents existants)
-  Phase 3 : Analyse & Recommandation parallèle (5 nouveaux agents)
+  Phase 1  : Découpage du CV en sections (cv_splitter)
+  Phase 2  : Extraction parallèle (8 agents)
+  Phase 3a : Analyse d'en-tête (run_header_analysis) — tourne en // avec Phase 2
+  Phase 3b : Analyse & Recommandation — 3 agents en parallèle après Phase 2 + 3a
 
-Produit un JSON en 2 parties : informations + recommandations.
+Flux optimisé : Phase 1 → (Phase 2 // Phase 3a) → Phase 3b
+Produit un JSON en 2 parties : candidat + recommandations.
 """
 
 import json
@@ -246,7 +248,66 @@ class CVAgentOrchestrator:
         return self._aggregate_extraction_results(results_map)
 
     # ──────────────────────────────────────────────
-    # PHASE 3 : Analyse & Recommandation (5 agents)
+    # PHASE 3a : Analyse d'en-tête (indépendante, tourne en // avec Phase 2)
+    # ──────────────────────────────────────────────
+
+    async def run_header_analysis(
+        self,
+        sections: Dict[str, str],
+        cv_raw_start: str = "",
+        cv_full_text: str = "",
+    ) -> Dict:
+        """Extrait le poste visé depuis l'en-tête du CV.
+
+        Ne dépend que de Phase 1 (sections) → peut tourner en PARALLÈLE avec Phase 2.
+        """
+        header_section = sections.get("header", "")
+        raw_for_header = cv_raw_start[:2000] if cv_raw_start else cv_full_text[:2000]
+        safe_cv_raw = raw_for_header.replace("{", "{{").replace("}", "}}")
+        safe_header = header_section.replace("{", "{{").replace("}", "}}")
+
+        header_data: Dict = {
+            "poste_vise": "Non identifié",
+            "niveau_seniorite": "non précisé",
+            "confiance": 0,
+        }
+
+        try:
+            t_config = self.tasks_config["poste_visé_task"].copy()
+            t_config["description"] = t_config["description"].format(
+                cv_raw_start=safe_cv_raw,
+                header=safe_header,
+            )
+            task = Task(config=t_config, agent=self.header_analyzer)
+            crew = Crew(agents=[self.header_analyzer], tasks=[task], verbose=False)
+            header_result = await crew.kickoff_async()
+
+            if header_result:
+                header_data = self._parse_json_output(
+                    header_result,
+                    {"poste_vise": "Non identifié", "niveau_seniorite": "non précisé", "confiance": 0},
+                )
+                logger.info(
+                    f"Header analyzer : poste_vise='{header_data.get('poste_vise')}', "
+                    f"confiance={header_data.get('confiance')}"
+                )
+        except Exception as e:
+            logger.error(f"Header analyzer failed: {e}", exc_info=True)
+
+        # Fallback programmatique si le LLM n'a pas trouvé le poste
+        if header_data.get("poste_vise", "Non identifié") == "Non identifié":
+            logger.warning("Header analyzer 'Non identifié' → fallback programmatique...")
+            fallback = self._fallback_extract_poste_vise(cv_full_text, header_section)
+            if fallback:
+                header_data["poste_vise"] = fallback
+                header_data["source_detection"] = "fallback_programmatique"
+                header_data["confiance"] = 70
+                logger.info(f"Fallback found poste_vise: '{fallback}'")
+
+        return header_data
+
+    # ──────────────────────────────────────────────
+    # PHASE 3b : Analyse & Recommandation (3 agents parallèles)
     # ──────────────────────────────────────────────
 
     async def analyze_and_recommend(
@@ -255,12 +316,15 @@ class CVAgentOrchestrator:
         sections: Dict[str, str],
         extraction: Dict[str, Any],
         cv_raw_start: str = "",
+        header_data: Dict = None,
     ) -> Dict[str, Any]:
-        """Exécute les 4 tâches d'analyse en 2 étapes optimisées.
+        """Exécute les 3 tâches d'analyse en parallèle.
 
-        Étape 3a : header_analyzer seul (rapide, nécessaire pour tous les autres)
-        Étape 3b : 3 agents en parallèle (quality, metier, project)
+        header_data est pré-calculé par run_header_analysis (en // avec Phase 2).
         """
+        if header_data is None:
+            logger.warning("analyze_and_recommend sans header_data — valeurs par défaut utilisées.")
+            header_data = {"poste_vise": "Non identifié", "niveau_seniorite": "non précisé", "confiance": 0}
 
         candidat = extraction.get("candidat", {})
         competences = candidat.get("compétences", {})
@@ -269,11 +333,9 @@ class CVAgentOrchestrator:
         skills_with_context = competences.get("skills_with_context", [])
         reconversion = candidat.get("reconversion", {})
 
-        # Identifier les domaines de compétences et méthodologies
         skill_domains = self._map_skills_to_domains(hard_skills)
         methodologies = self._extract_methodologies(hard_skills, skill_domains)
 
-        # Préparer les résumés pour les prompts
         experiences_summary = json.dumps(
             candidat.get("expériences", []), ensure_ascii=False
         )[:3000]
@@ -285,14 +347,16 @@ class CVAgentOrchestrator:
             projets.get("personal", []), ensure_ascii=False
         )[:2000]
         projects_summary = f"Pro: {professional_projects}\nPerso: {personal_projects}"
-
         reconversion_data = json.dumps(reconversion, ensure_ascii=False) if reconversion else "{}"
 
-        # Préparer le référentiel métiers complet (30 métiers)
         metiers_reference = self._prepare_metiers_for_prompt()
 
-        # Skills résumé pour header analysis (fallback)
-        skills_summary = ", ".join(hard_skills[:20]) if hard_skills else "Non identifiées"
+        poste_vise = header_data.get("poste_vise", "Non identifié")
+        niveau_seniorite = header_data.get("niveau_seniorite", "non précisé")
+        metier_reference_detail = self._get_metier_reference_for_poste(poste_vise)
+
+        raw_for_header = cv_raw_start[:2000] if cv_raw_start else cv_full_text[:2000]
+        safe_cv_raw = raw_for_header.replace("{", "{{").replace("}", "}}")
 
         def create_task_async(task_key, agent, **kwargs):
             t_config = self.tasks_config[task_key].copy()
@@ -301,71 +365,15 @@ class CVAgentOrchestrator:
             c = Crew(agents=[agent], tasks=[task], verbose=False)
             return (task_key, c.kickoff_async())
 
-        # Utilise le texte brut fitz si fourni, sinon fallback sur le début du Markdown
-        raw_for_header = cv_raw_start[:2000] if cv_raw_start else cv_full_text[:2000]
-        header_section = sections.get("header", "")
-        safe_cv_raw = raw_for_header.replace("{", "{{").replace("}", "}}")
-        safe_header = header_section.replace("{", "{{").replace("}", "}}")
-        safe_skills = skills_summary.replace("{", "{{").replace("}", "}}")
-        header_data = {
-            "poste_vise": "Non identifié",
-            "niveau_seniorite": "non précisé",
-            "confiance": 0,
-        }
-
-        try:
-            header_coroutine = create_task_async(
-                "poste_visé_task",
-                self.header_analyzer,
-                cv_raw_start=safe_cv_raw,
-                header=safe_header,
-                skills_summary=safe_skills,
-            )
-            header_result = await header_coroutine[1]
-
-            if header_result:
-                header_data = self._parse_json_output(
-                    header_result,
-                    {
-                        "poste_vise": "Non identifié",
-                        "niveau_seniorite": "non précisé",
-                        "confiance": 0,
-                    },
-                )
-                logger.info(f"Header analyzer result: poste_vise='{header_data.get('poste_vise')}', confiance={header_data.get('confiance')}")
-        except Exception as e:
-            logger.error(f"Header analyzer failed: {e}", exc_info=True)
-
-        poste_vise = header_data.get("poste_vise", "Non identifié")
-        niveau_seniorite = header_data.get("niveau_seniorite", "non précisé")
-
-        # --- Fallback programmatique si le LLM n'a pas trouvé le poste ---
-        if poste_vise == "Non identifié":
-            logger.warning("Header analyzer returned 'Non identifié', trying fallback extraction...")
-            fallback = self._fallback_extract_poste_vise(
-                cv_full_text, header_section
-            )
-            if fallback:
-                poste_vise = fallback
-                header_data["poste_vise"] = fallback
-                header_data["source_detection"] = "fallback_programmatique"
-                header_data["confiance"] = 70
-                logger.info(f"Fallback found poste_vise: '{fallback}'")
-
-        # Préparer le détail du métier pour le project_analyzer
-        metier_reference_detail = self._get_metier_reference_for_poste(poste_vise)
-
-        # --- Étape 3b : 3 agents en parallèle ---
+        # 3 agents en parallèle (quality + metier matching + project analysis)
         parallel_tasks = [
             (
                 "cv_quality_task",
                 self.cv_quality_checker,
                 {
-                    "cv_full_text": cv_full_text[:8000],
+                    "cv_full_text": cv_full_text[:6000],
                     "cv_raw_start": safe_cv_raw,
-                    "skills_with_context": json.dumps(
-                        skills_with_context, ensure_ascii=False
-                    )[:2000],
+                    "skills_with_context": json.dumps(skills_with_context, ensure_ascii=False)[:2000],
                     "experiences_summary": experiences_summary,
                     "projects_summary": projects_summary[:2000],
                     "niveau_seniorite": niveau_seniorite,
@@ -393,7 +401,6 @@ class CVAgentOrchestrator:
                 {
                     "poste_vise": poste_vise,
                     "metier_reference_detail": metier_reference_detail,
-                    "experiences_summary": experiences_summary,
                     "professional_projects": professional_projects,
                     "personal_projects": personal_projects,
                     "reconversion_data": reconversion_data,
@@ -415,11 +422,34 @@ class CVAgentOrchestrator:
             else:
                 analysis_results[key] = result
 
-        return self._aggregate_recommendations(
-            analysis_results,
-            header_data,
-            poste_vise,
-        )
+        recommendations = self._aggregate_recommendations(analysis_results, header_data)
+
+        # ── Filtre dur : ne garder que les projets issus de la section projets ──
+        extracted_titles: set[str] = set()
+        for p in projets.get("professional", []):
+            if isinstance(p, dict) and p.get("title"):
+                extracted_titles.add(p["title"].strip().lower())
+        for p in projets.get("personal", []):
+            if isinstance(p, dict) and p.get("title"):
+                extracted_titles.add(p["title"].strip().lower())
+
+        if extracted_titles:
+            def _is_extracted_project(titre: str) -> bool:
+                t = titre.strip().lower()
+                if t in extracted_titles:
+                    return True
+                return any(t in ref or ref in t for ref in extracted_titles)
+
+            recommendations["analyse_projets"] = [
+                p for p in recommendations.get("analyse_projets", [])
+                if isinstance(p, dict) and _is_extracted_project(p.get("titre", ""))
+            ]
+            logger.info(
+                f"Filtre projets : {len(recommendations['analyse_projets'])} projets conservés "
+                f"sur {len(extracted_titles)} extraits."
+            )
+
+        return recommendations
 
     # ──────────────────────────────────────────────
     # Mapping compétences -> domaines
@@ -611,9 +641,8 @@ class CVAgentOrchestrator:
         self,
         analysis_results: Dict[str, Any],
         header_data: Dict,
-        poste_vise: str,
     ) -> Dict[str, Any]:
-        """Agrège les résultats d'analyse avec des recommandations orientées projets."""
+        """Agrège les résultats d'analyse en un objet recommandations structuré."""
 
         def get_parsed(key, default=None):
             if key not in analysis_results:
@@ -627,21 +656,10 @@ class CVAgentOrchestrator:
         )
         project_data = get_parsed("project_analysis_task", {"analyse_projets": []})
 
-        # ── Conseils d'amélioration ────────────────────────────────────────────
+        # Conseils d'amélioration : uniquement les conseils qualité CV
         conseils = []
-
-        # 1. Conseils qualité CV
         if isinstance(quality_data, dict):
             conseils.extend(quality_data.get("conseils_prioritaires", []))
-
-        # 2. Projets à mettre en avant
-        if isinstance(project_data, dict):
-            for item in (project_data.get("ordre_mise_en_avant", []) or [])[:3]:
-                if isinstance(item, dict) and item.get("raison"):
-                    conseils.append(
-                        f"Projet prioritaire #{item.get('rang', '?')} à mettre en avant"
-                        f" - '{item.get('titre', '?')}' : {item['raison']}"
-                    )
 
         return {
             "header_analysis": header_data,
@@ -658,11 +676,6 @@ class CVAgentOrchestrator:
             "qualite_cv": quality_data,
             "analyse_projets": (
                 project_data.get("analyse_projets", [])
-                if isinstance(project_data, dict)
-                else []
-            ),
-            "ordre_mise_en_avant_projets": (
-                project_data.get("ordre_mise_en_avant", [])
                 if isinstance(project_data, dict)
                 else []
             ),
@@ -824,14 +837,9 @@ class CVAgentOrchestrator:
                         pass
             return None
 
-        # Tentative 1 : parse du texte tel quel (gère "JSON : {...}" et JSON propre)
         result = _try_parse(raw)
         if result is not None:
             return result
-
-        # Tentative 2 : le LLM a copié les {{ }} du expected_output YAML.
-        # ⚠️ On ne remplace QUE si {{ est détecté — évite de casser un JSON
-        # compact valide du type {"inner": {"key": "val"}} → {"inner": {"key": "val"}
         if "{{" in raw:
             cleaned = raw.replace("{{", "{").replace("}}", "}")
             result = _try_parse(cleaned)

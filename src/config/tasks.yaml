@@ -334,65 +334,49 @@ cv_quality_task:
 
 project_analysis_task:
   description: >
-    Évalue CHAQUE projet du CV, fournis une critique objective et complète,
-    et recommande quels projets mettre en avant pour le poste visé.
+    Évalue CHAQUE projet du CV et détermine leur pertinence pour le poste visé.
 
     POSTE VISÉ : "{poste_vise}"
 
     RÉFÉRENTIEL DU MÉTIER VISÉ (compétences et outils attendus) :
     {metier_reference_detail}
 
-    EXPÉRIENCES DU CANDIDAT : {experiences_summary}
-
     PROJETS PROFESSIONNELS : {professional_projects}
     PROJETS PERSONNELS : {personal_projects}
 
     RECONVERSION : {reconversion_data}
 
-    Pour CHAQUE projet, analyse EN PROFONDEUR :
-    1. COHÉRENCE AVEC LE POSTE VISÉ : Le domaine et les technos sont-ils pertinents ?
-       Compare avec les compétences et outils du référentiel métier ci-dessus.
-    2. QUALITÉ DE DESCRIPTION : Est-ce bien décrit ? Y a-t-il des résultats MESURABLES
-       et des métriques techniques spécifiques (performance, volume, impact) ?
-    3. COMPLEXITÉ TECHNIQUE : Trivial vs ambitieux. Évalue l'architecture, les choix techniques.
-    4. IMPACT DÉMONTRÉ : Métriques, utilisateurs, déploiement en production ?
-    5. TECHNOLOGIES : Actuelles et recherchées pour le poste visé ?
+    Pour CHAQUE projet, fournis :
+    1. score_coherence (0-100) : cohérence avec le poste visé et le référentiel métier
+    2. rang : classement par ORDRE DE PERTINENCE pour le poste (1 = le plus pertinent pour ce poste)
+    3. raison : explication CONCISE de pourquoi ce projet doit être mis en avant (ou pas) pour ce poste visé
+    4. points_forts : atouts concrets (technologies démontrées, impact, qualité)
+    5. points_amelioration : ce qui manque pour convaincre (métriques, résultats, détails techniques)
+    6. conseils_description : conseils CONCRETS pour améliorer la description
+       (métriques à ajouter, aspects techniques à détailler, résultats à valoriser)
 
-    RECOMMANDATION DE MISE EN AVANT :
-    - Classe les projets par ORDRE DE PRIORITÉ pour le poste visé.
-    - Pour chaque projet, explique POURQUOI il devrait être mis en avant (ou pas) pour ce poste.
-    - Donne des conseils CONCRETS pour améliorer la description de chaque projet
-      (quelles métriques ajouter, quels aspects techniques détailler, quels résultats valoriser).
-
-    RÈGLES :
-    - Score de cohérence de 0 à 100 pour chaque projet.
-    - Si un projet semble artificiel ou trop vague, signale-le.
-    - Les projets doivent raconter une histoire cohérente avec le profil global.
+    RÈGLES STRICTES :
+    - N'analyse QUE les projets listés dans PROJETS PROFESSIONNELS et PROJETS PERSONNELS.
+    - N'invente AUCUN projet à partir des expériences. Les expériences sont un contexte uniquement.
+    - Si PROJETS PROFESSIONNELS et PROJETS PERSONNELS sont vides, retourne "analyse_projets": [].
+    - Le nombre d'entrées dans "analyse_projets" doit correspondre EXACTEMENT au nombre de projets fournis.
+    - Retourne les projets TRIÉS par rang (rang 1 en premier).
   expected_output: >
     JSON : {{
       "analyse_projets": [
         {{
           "titre": "Dashboard RH",
-          "type": "professional",
-          "score_coherence": 90,
-          "points_forts": ["Technologies pertinentes", "Impact mesurable"],
-          "points_amelioration": ["Ajouter des métriques de performance spécifiques"],
-          "coherence_avec_poste_vise": "Très cohérent - projet BI directement lié au poste",
-          "technologies_pertinentes": true,
-          "complexite": "moyenne",
-          "conseils_description": ["Préciser le volume de données", "Ajouter le temps de génération"]
-        }}
-      ],
-      "ordre_mise_en_avant": [
-        {{
-          "titre": "Projet X",
           "rang": 1,
-          "raison": "Ce projet démontre directement les compétences clés du poste visé..."
+          "raison": "Projet BI directement aligné avec les outils et missions du poste visé",
+          "score_coherence": 90,
+          "points_forts": ["SQL et Power BI maîtrisés et démontrés", "Impact mesurable sur les décisions RH"],
+          "points_amelioration": ["Ajouter le volume de données traité", "Mentionner le temps de chargement"],
+          "conseils_description": ["Préciser le volume de données traité (ex: 500k lignes)", "Ajouter une métrique de performance"]
         }}
       ],
       "coherence_globale": {{
         "score": 85,
-        "commentaire": "Les projets racontent une histoire cohérente..."
+        "commentaire": "Ensemble de projets cohérent avec le poste visé"
       }}
     }}
 
