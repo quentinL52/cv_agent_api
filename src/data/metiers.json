@@ -1,0 +1,1273 @@
+{
+  "metadata": {
+    "version": "2.0",
+    "date": "2026-02-06",
+    "langue": "fr",
+    "description": "Métiers Data/IA avec compétences et outils enrichis 2025-2026"
+  },
+  "metiers": [
+    {
+      "id": "data_analyst",
+      "nom": "Data Analyst",
+      "categorie": "Noyau data & analytique",
+      "description": "Analyse les données pour produire des rapports, tableaux de bord et recommandations opérationnelles au service des métiers.",
+      "missions_principales": [
+        "Collecter, nettoyer et structurer les données issues de différentes sources",
+        "Construire et maintenir des tableaux de bord et rapports réguliers",
+        "Analyser les tendances, identifier des anomalies et opportunités",
+        "Traduire les besoins métier en indicateurs et analyses",
+        "Présenter les résultats et recommandations aux équipes métier"
+      ],
+      "competences_techniques": [
+        "Solide maîtrise de SQL (jointures, agrégations, CTE, window functions de base)",
+        "Bonne maîtrise d’Excel/Google Sheets (formules avancées, tableaux croisés dynamiques, macros simples)",
+        "Visualisation de données avec un ou plusieurs outils BI",
+        "Manipulation et préparation de données avec Python (pandas) ou R pour les profils plus techniques",
+        "Compréhension des bases de données relationnelles et schémas classiques (étoile, snowflake)",
+        "Notions de statistiques descriptives (moyenne, médiane, variance, corrélations, tests simples)",
+        "Connaissance de base des data warehouses et data lakes",
+        "Bonnes pratiques de requêtage (performance, lisibilité, documentation)",
+        "Notions d’automatisation des rapports (scheduling, rafraîchissement des datasets)",
+        "Capacité à interpréter les résultats d’AB testing ou d’expérimentations simples"
+      ],
+      "outils_technologies": [
+        "SQL (PostgreSQL, MySQL, SQL Server, BigQuery, Snowflake)",
+        "Excel, Google Sheets",
+        "BI : Power BI, Tableau, Looker, Qlik",
+        "Python (pandas, numpy) ou R (dplyr, ggplot2) pour les profils plus techniques",
+        "Outils de data warehouse : BigQuery, Snowflake, Redshift (en consommation)",
+        "Outils de collaboration : Confluence, Notion, Jira",
+        "Git en lecture / basique pour récupérer des scripts ou requêtes partagées"
+      ],
+      "competences_soft": [
+        "Capacité à comprendre rapidement les besoins métier",
+        "Clarté dans la communication écrite et orale",
+        "Esprit de synthèse et sens de la pédagogie",
+        "Rigueur et attention aux détails",
+        "Capacité à challenger les chiffres et à détecter des incohérences"
+      ],
+      "niveau_etude": "Bac+3 à Bac+5 (licence pro, bachelor, Master en statistiques, économie, informatique décisionnelle ou école de commerce avec majeure data/BI).",
+      "formations_utiles": [
+        "Licence / Master en statistiques, MIAGE, économie quantitative",
+        "Master ou mastère spécialisé en Business Intelligence ou data analytics",
+        "Bootcamps data analytics (3–6 mois)",
+        "Certifications Power BI, Tableau, Looker"
+      ],
+      "experience_requise": "0–2 ans pour un profil junior, 3–5 ans pour un profil confirmé pouvant piloter un périmètre métier."
+    },
+    {
+      "id": "bi_analyst",
+      "nom": "Business Intelligence Analyst",
+      "categorie": "Noyau data & analytique",
+      "description": "Conçoit et administre des solutions décisionnelles (BI) pour fournir aux métiers une vision fiable et partagée des indicateurs clés.",
+      "missions_principales": [
+        "Recueillir les besoins des métiers en matière de reporting et d’indicateurs",
+        "Concevoir et développer des tableaux de bord dynamiques et interactifs",
+        "Modéliser les données pour le décisionnel (schémas en étoile, cubes OLAP)",
+        "Optimiser les requêtes et sources pour garantir de bonnes performances",
+        "Administrer les plateformes BI (droits, rafraîchissements, gouvernance des reports)"
+      ],
+      "competences_techniques": [
+        "Maîtrise des concepts BI (dimensions, faits, grain, mesures, KPI)",
+        "SQL avancé appliqué au décisionnel",
+        "Conception de schémas en étoile et modèles analytiques",
+        "Utilisation avancée d’un ou plusieurs outils BI (DAX, MDX, calculs complexes)",
+        "Gestion des sources de données, connexions, gateways et rafraîchissement",
+        "Notions de performance tuning sur requêtes et modèles BI",
+        "Compréhension des principes de gouvernance BI (catalogue de rapports, validation, cycles de vie)"
+      ],
+      "outils_technologies": [
+        "Power BI (DAX, Power Query), Tableau, Looker, Qlik",
+        "SQL Server, Oracle, PostgreSQL",
+        "Outils ETL/ELT simples (Power Query, Fivetran, Stitch, Talend dans certains environnements)",
+        "Outils de gestion de versions de rapports / assets BI (Git, workspaces managés)"
+      ],
+      "competences_soft": [
+        "Excellente compréhension des besoins métier et de la chaîne de décision",
+        "Capacité à prioriser les demandes de reporting",
+        "Sens de la pédagogie pour former les utilisateurs aux outils BI",
+        "Communication claire avec les équipes IT et métiers"
+      ],
+      "niveau_etude": "Bac+3 à Bac+5 en informatique décisionnelle, statistiques, école d’ingénieur/commerce avec spécialisation BI.",
+      "formations_utiles": [
+        "Master ou mastère spécialisé en Business Intelligence / décisionnel",
+        "Formations éditeur (Power BI, Tableau, Qlik)",
+        "Certifications officielles des outils BI"
+      ],
+      "experience_requise": "1–3 ans dans le décisionnel ou la data pour être opérationnel en autonomie."
+    },
+    {
+      "id": "data_miner",
+      "nom": "Data Miner",
+      "categorie": "Noyau data & analytique",
+      "description": "Utilise des techniques de fouille de données pour découvrir des patterns, segments et relations cachées dans de grands volumes de données.",
+      "missions_principales": [
+        "Préparer et explorer de grands volumes de données",
+        "Mettre en œuvre des méthodes de segmentation, scoring, clustering",
+        "Identifier des patterns et signaux faibles pertinents pour le métier",
+        "Tester et valider des hypothèses statistiques",
+        "Documenter les résultats et proposer des recommandations opérationnelles"
+      ],
+      "competences_techniques": [
+        "Statistiques descriptives et inférentielles",
+        "Techniques de clustering (K-means, DBSCAN, hiérarchique, etc.)",
+        "Réduction de dimension (PCA, t-SNE, UMAP)",
+        "Notions de machine learning supervisé pour scoring prédictif",
+        "Manipulation de données avec SQL et Python/R",
+        "Visualisation avancée (cartes de chaleur, matrices de corrélation, etc.)"
+      ],
+      "outils_technologies": [
+        "Python (pandas, scikit-learn, scipy)",
+        "R (tidyverse, caret, factoextra)",
+        "Outils de data mining type RapidMiner, KNIME, Orange dans certains contextes",
+        "SQL pour l’extraction de données",
+        "BI/visualisation pour présenter les résultats"
+      ],
+      "competences_soft": [
+        "Curiosité analytique et capacité à formuler des hypothèses",
+        "Rigueur dans la méthodologie et la validation",
+        "Capacité à expliquer des patterns complexes de façon accessible"
+      ],
+      "niveau_etude": "Bac+3 à Bac+5 en statistiques, data science, mathématiques appliquées.",
+      "formations_utiles": [
+        "Licence/Master en statistiques ou data science",
+        "Formations data mining, segmentation, scoring marketing",
+        "MOOC spécialisés en data mining et clustering"
+      ],
+      "experience_requise": "1–3 ans d’expérience en analyse de données ou data science."
+    },
+    {
+      "id": "statistician",
+      "nom": "Statisticien Data",
+      "categorie": "Noyau data & analytique",
+      "description": "Conçoit des plans d’échantillonnage et des modèles statistiques pour analyser et interpréter les données de manière rigoureuse.",
+      "missions_principales": [
+        "Concevoir des études statistiques et plans de sondage",
+        "Choisir et appliquer les méthodes statistiques appropriées",
+        "Valider la qualité des données et la robustesse des résultats",
+        "Produire des rapports et avis statistiques pour éclairer les décisions",
+        "Collaborer avec des data scientists et métiers sur la méthodologie"
+      ],
+      "competences_techniques": [
+        "Statistiques descriptives, inférentielles, modèles linéaires et généralisés",
+        "Tests d’hypothèses, intervalles de confiance, ANOVA",
+        "Modèles de régression (linéaire, logistique, Poisson, etc.)",
+        "Méthodes bayésiennes de base",
+        "Logiciels statistiques (R, SAS, éventuellement Stata/SPSS)",
+        "Programmation en R ou Python pour l’automatisation d’analyses",
+        "Gestion de données d’enquête et pondérations"
+      ],
+      "outils_technologies": [
+        "R (tidyverse, lme4, brms, etc.)",
+        "SAS, SPSS, Stata selon les secteurs",
+        "Python (pandas, statsmodels, scipy)",
+        "SQL pour l’accès aux données",
+        "LaTeX ou RMarkdown pour la production de rapports"
+      ],
+      "competences_soft": [
+        "Rigueur scientifique et sens du détail",
+        "Capacité à challenger la qualité des données et les hypothèses",
+        "Bonne communication avec des non-statisticiens"
+      ],
+      "niveau_etude": "Bac+5 minimum (Master en statistiques, mathématiques appliquées) ; Doctorat apprécié dans certains domaines (santé, recherche, R&D).",
+      "formations_utiles": [
+        "Master en statistiques ou biostatistiques",
+        "Doctorat en statistiques / mathématiques appliquées",
+        "Formations spécialisées selon le domaine (santé, économie, industrie)"
+      ],
+      "experience_requise": "0–2 ans pour junior, 3–5 ans pour confirmé."
+    },
+    {
+      "id": "data_scientist",
+      "nom": "Data Scientist",
+      "categorie": "Noyau data & analytique",
+      "description": "Conçoit des modèles prédictifs, explore les données et construit des solutions ML/IA pour répondre à des problématiques métier complexes.",
+      "missions_principales": [
+        "Réaliser l'exploration et la préparation de données sur différentes sources et formats",
+        "Concevoir, entraîner, évaluer et comparer des modèles de machine learning et deep learning",
+        "Traduire des besoins métier en problématiques data et en indicateurs mesurables",
+        "Industrialiser des prototypes en scripts ou jobs reproductibles",
+        "Collaborer avec les équipes data engineering, produit et métier",
+        "Communiquer les résultats via visualisations, rapports et data storytelling"
+      ],
+      "competences_techniques": [
+        "Python avancé (pandas, numpy, scipy, scikit-learn, statsmodels)",
+        "Programmation orientée objet, bonnes pratiques (tests unitaires, packaging, logging, CI)",
+        "Statistiques avancées (tests d’hypothèses, échantillonnage, bootstrap, méthodes bayésiennes de base)",
+        "Machine learning supervisé et non supervisé (régression, arbres, gradient boosting, SVM, clustering, réduction de dimension)",
+        "Deep learning (CNN, RNN, transformers) pour texte, image et séries temporelles",
+        "Traitement de données à grande échelle avec Spark / PySpark ou Dask",
+        "Feature engineering, sélection de variables, encoding, normalisation, gestion des valeurs manquantes",
+        "Évaluation de modèles (cross-validation, métriques de classification et régression, AUC, F1, courbes PR, calibration)",
+        "Concepts de MLOps de base (suivi d’expériences, versioning de modèles et de données, reproductibilité)",
+        "Cloud data & AI (AWS, GCP ou Azure) pour entraînement et déploiement",
+        "Bon niveau SQL (jointures complexes, CTE, window functions, optimisation)",
+        "Connaissances de base en LLMs et GenAI (APIs, RAG simple, prompt engineering de base)"
+      ],
+      "outils_technologies": [
+        "Python, SQL, éventuellement R",
+        "scikit-learn, XGBoost, LightGBM, CatBoost",
+        "TensorFlow, Keras, PyTorch, Hugging Face Transformers",
+        "Apache Spark / PySpark, Dask",
+        "pandas, polars",
+        "Matplotlib, Seaborn, Plotly, Power BI, Tableau",
+        "MLflow, Weights & Biases, DVC",
+        "JupyterLab, VS Code, Databricks, Vertex AI Workbench, SageMaker Studio",
+        "PostgreSQL, MySQL, BigQuery, Snowflake, MongoDB",
+        "Git, GitHub/GitLab, GitHub Actions / GitLab CI"
+      ],
+      "competences_soft": [
+        "Capacité à vulgariser des résultats techniques à des publics non techniques",
+        "Orientation produit et impact business",
+        "Esprit critique et rigueur scientifique",
+        "Curiosité et veille technologique continue",
+        "Travail en équipe, pair programming ponctuel, feedback constructif"
+      ],
+      "niveau_etude": "Bac+5 (Master data science, statistiques, mathématiques appliquées ou école d’ingénieur) ; Doctorat apprécié pour des postes orientés R&D.",
+      "formations_utiles": [
+        "Master Data Science / IA",
+        "École d’ingénieur avec majeure data/IA",
+        "Certifications cloud orientées data/ML (AWS ML Specialty, GCP Professional ML Engineer, Azure DP-100)",
+        "MOOC/bootcamps avancés en machine learning, deep learning, NLP et MLOps"
+      ],
+      "experience_requise": "0–2 ans pour junior, 3–5 ans pour confirmé, 6+ ans pour senior / lead."
+    },
+    {
+      "metiers": [
+        {
+          "id": "data_engineer",
+          "nom": "Data Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Construit et maintient les pipelines et plateformes de données modernes (batch et streaming) pour alimenter l’analytics, le reporting et les systèmes d’IA.",
+          "missions_principales": [
+            "Concevoir et implémenter des architectures de données (data lake, data warehouse, lakehouse)",
+            "Mettre en place des pipelines ELT/ETL robustes, monitorés et testés",
+            "Gérer l’ingestion de données en batch et temps réel (streaming)",
+            "Optimiser les performances, la disponibilité et les coûts des plateformes data, notamment dans le cloud",
+            "Collaborer avec data scientists, analysts et équipes produit pour exposer des données consommables",
+            "Mettre en œuvre des pratiques de qualité, sécurité et gouvernance des données"
+          ],
+          "competences_techniques": [
+            "SQL avancé (requêtes complexes, tuning, indexation, partitionnement)",
+            "Python pour data engineering (scripts, packages, tests, typage, logging)",
+            "Modern data stack : dbt (data modeling & transformations), orchestration (Airflow, Dagster, Prefect)",
+            "Streaming & messaging : Apache Kafka, Confluent, AWS Kinesis, GCP Pub/Sub",
+            "Traitement distribué : Apache Spark (batch & streaming), éventuellement Flink ou Beam",
+            "Cloud data warehouses : Snowflake, BigQuery, Redshift, Synapse",
+            "Stockage data lake : S3, GCS, ADLS ; formats Parquet, ORC, Delta Lake, Apache Iceberg",
+            "CI/CD & DevOps : Git, pipelines CI, conteneurisation (Docker), infrastructure as code (Terraform, CloudFormation, Pulumi)",
+            "Concepts d’architecture data (lambda, kappa, lakehouse, microservices data)",
+            "Notions de sécurité : IAM, chiffrement au repos/en transit, gestion des secrets, data masking",
+            "Tests de données : tests unitaires, de contrats et de qualité (schémas, contraintes, anomalies)"
+          ],
+          "outils_technologies": [
+            "Orchestration : Apache Airflow, Dagster, Prefect",
+            "Transformation : dbt (core ou cloud)",
+            "Streaming : Kafka, Confluent Platform, AWS Kinesis, GCP Pub/Sub",
+            "Traitement : Spark (Databricks, EMR, DataProc), Flink, Beam",
+            "Cloud : AWS (Glue, Redshift, S3), GCP (Dataflow, BigQuery, GCS), Azure (Data Factory, Synapse, ADLS)",
+            "Data warehouse : Snowflake, BigQuery, Redshift, Synapse",
+            "Monitoring : Prometheus, Grafana, services de monitoring cloud natif",
+            "Infra as code : Terraform, CloudFormation, Pulumi",
+            "Conteneurs : Docker, Kubernetes (EKS, GKE, AKS)",
+            "Qualité & catalogue : Great Expectations, Soda Core, OpenMetadata, Amundsen"
+          ],
+          "competences_soft": [
+            "Orientation fiabilité et résilience (SRE mindset appliqué aux données)",
+            "Capacité à collaborer avec data scientists, analysts, product et infra",
+            "Documentation claire des architectures et pipelines",
+            "Analyse de risques (SLA/SLO, volumétrie, coûts cloud, dette technique)",
+            "Autonomie et capacité à prioriser les chantiers structurants"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 (licence pro, Master, école d’ingénieur en informatique, systèmes distribués ou data).",
+          "formations_utiles": [
+            "Master Big Data / Systèmes distribués / Cloud",
+            "Bootcamps ou formations intensives en data engineering et modern data stack",
+            "Certifications cloud data (AWS Data Analytics, GCP Professional Data Engineer, Azure DP-203)",
+            "Formations spécialisées Kafka, Spark, dbt, Airflow/Dagster"
+          ],
+          "experience_requise": "1–2 ans pour profils juniors, 3–5 ans pour confirmé, 5+ ans pour data architect."
+        },
+        {
+          "id": "analytics_engineer",
+          "nom": "Analytics Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Fait le pont entre data engineering et data analytics : modèle les données pour les rendre directement exploitables par les analystes et les métiers.",
+          "missions_principales": [
+            "Modéliser les données analytiques (modèles dimensionnels, marts orientés métier)",
+            "Écrire et maintenir les transformations SQL (ELT) dans le data warehouse",
+            "Documenter les modèles de données et les définitions de KPI",
+            "Collaborer avec les data analysts pour répondre rapidement aux besoins métier",
+            "Assurer la qualité, la cohérence et la performance des datasets analytiques"
+          ],
+          "competences_techniques": [
+            "SQL avancé (window functions, CTE, optimisation)",
+            "Modélisation de données BI (étoile, snowflake, data vault simplifié)",
+            "Transformation ELT dans un data warehouse cloud",
+            "Utilisation avancée de dbt (models, tests, documentation, lineage)",
+            "Notions de performance des requêtes et des schémas dans DW cloud",
+            "Compréhension des besoins métier et des métriques business",
+            "Notions de Git et CI pour les projets analytics"
+          ],
+          "outils_technologies": [
+            "dbt (core/cloud)",
+            "Data warehouses : Snowflake, BigQuery, Redshift, Synapse",
+            "SQL (PostgreSQL, BigQuery, Snowflake)",
+            "Orchestration : Airflow, Dagster, Prefect (en collaboration avec data engineers)",
+            "BI : Power BI, Looker, Tableau (en consommation et préparation de modèles)",
+            "Git, GitHub/GitLab pour versionner le code analytics"
+          ],
+          "competences_soft": [
+            "Forte sensibilité business",
+            "Communication efficace avec les métiers et les analystes",
+            "Rigueur dans la documentation et la définition de KPI",
+            "Capacité à prioriser les demandes analytics"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 (informatique décisionnelle, statistiques, école d’ingénieur ou commerce avec spécialisation data).",
+          "formations_utiles": [
+            "Formations modern data stack (dbt, Snowflake/BigQuery, Looker/Power BI)",
+            "Bootcamps data analytics / analytics engineering",
+            "Certifications sur data warehouses cloud"
+          ],
+          "experience_requise": "1–3 ans en data analysis/BI ou data engineering."
+        },
+        {
+          "id": "dataops_engineer",
+          "nom": "DataOps Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Industrialise et automatise les processus data (du sourcing à la consommation) en appliquant les principes DevOps au monde de la donnée.",
+          "missions_principales": [
+            "Automatiser le déploiement et la surveillance des pipelines de données",
+            "Mettre en place des tests et contrôles qualité sur les données",
+            "Gérer les environnements (dev, test, prod) pour les workflows data",
+            "Superviser les SLA/SLO des flux et agir en cas d’incidents",
+            "Collaborer avec data engineers, analysts et SRE pour fiabiliser la plateforme"
+          ],
+          "competences_techniques": [
+            "Bon niveau en Python et/ou bash pour l’automatisation",
+            "Orchestration de workflows (Airflow, Dagster, Prefect)",
+            "CI/CD (GitHub Actions, GitLab CI, Jenkins)",
+            "Monitoring & alerting (Prometheus, Grafana, outils cloud natifs)",
+            "Concepts DataOps (tests de données, data contracts, observabilité des données)",
+            "Connaissance des architectures data et des principaux outils de la stack data",
+            "Notions de conteneurisation et Kubernetes"
+          ],
+          "outils_technologies": [
+            "Airflow, Dagster, Prefect",
+            "Git, GitHub/GitLab, Jenkins",
+            "Prometheus, Grafana, Loki, outils de logs",
+            "Great Expectations, Soda pour la qualité des données",
+            "Docker, Kubernetes",
+            "Outils de ticketing (Jira) et de gestion d’incidents"
+          ],
+          "competences_soft": [
+            "Culture fiabilité / SRE appliquée aux données",
+            "Capacité à collaborer avec plusieurs profils (ingénieurs, ops, métier)",
+            "Rigueur, sens du détail, gestion de l’urgence en cas d’incident"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 en informatique, systèmes, data engineering.",
+          "formations_utiles": [
+            "Formations DevOps/Cloud complétées par un volet data",
+            "Certifications cloud (AWS, GCP, Azure)",
+            "Formations DataOps, Data Observability"
+          ],
+          "experience_requise": "2–4 ans en data engineering, DevOps ou SRE."
+        },
+        {
+          "id": "mlops_engineer",
+          "nom": "MLOps Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Automatise et fiabilise le cycle de vie des modèles de machine learning (training, déploiement, monitoring, retraining) en production.",
+          "missions_principales": [
+            "Concevoir et maintenir des pipelines de training, validation et déploiement des modèles",
+            "Intégrer le tracking d’expériences, de datasets et de modèles dans les workflows",
+            "Mettre en place le monitoring des modèles (performance, dérive, incidents)",
+            "Automatiser le retraining et la mise à jour des modèles",
+            "Collaborer avec data scientists, ML engineers et équipes infra/DevOps"
+          ],
+          "competences_techniques": [
+            "Solide base DevOps (Linux, réseaux, CI/CD, conteneurs, Kubernetes)",
+            "Connaissance pratique des frameworks ML (scikit-learn, TensorFlow, PyTorch)",
+            "MLOps : experiment tracking, model registry, feature store, pipelines ML",
+            "Outils de déploiement ML (batch, API temps réel, streaming)",
+            "Monitoring de modèles : dérive, performance, fairness, logs",
+            "Cloud AI : SageMaker, Vertex AI, Azure ML, Databricks ML",
+            "Notions de sécurité et conformité spécifique à l’IA (audit, traçabilité)"
+          ],
+          "outils_technologies": [
+            "MLflow, Kubeflow, ZenML, Metaflow",
+            "Weights & Biases, Neptune.ai",
+            "CI/CD : GitHub Actions, GitLab CI, Argo CD",
+            "Serving : FastAPI, TorchServe, TF Serving, Triton, BentoML",
+            "Infrastructure : Docker, Kubernetes, Helm",
+            "Monitoring : Prometheus, Grafana, outils de model monitoring (Evidently AI, WhyLabs)",
+            "Cloud AI : AWS SageMaker, GCP Vertex AI, Azure ML"
+          ],
+          "competences_soft": [
+            "Culture de la fiabilité et de l’automatisation",
+            "Communication avec data scientists et DevOps",
+            "Capacité à standardiser les pratiques dans l’équipe",
+            "Veille technologique sur l’écosystème MLOps/LLMOps"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 en informatique, data, ou équivalent, avec forte appétence pour l’IA et le DevOps.",
+          "formations_utiles": [
+            "Formations MLOps spécialisées",
+            "Certifications cloud ML (AWS, GCP, Azure)",
+            "Formations avancées en Kubernetes et CI/CD"
+          ],
+          "experience_requise": "2–5 ans en ML engineering, DevOps ou data engineering."
+        },
+        {
+          "id": "ml_engineer",
+          "nom": "Machine Learning Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Met en production des modèles de ML/IA, conçoit des APIs de prédiction et gère le cycle de vie des modèles (training, déploiement, monitoring, retraining).",
+          "missions_principales": [
+            "Industrialiser des prototypes de data science en services robustes et scalables",
+            "Concevoir des APIs de prédiction (batch, temps réel, streaming) pour les produits",
+            "Mettre en place des pipelines de training, validation, déploiement et monitoring de modèles",
+            "Optimiser les performances (latence, coût, consommation GPU/CPU) et la robustesse des systèmes ML",
+            "Collaborer avec les équipes produit, data science, DevOps/MLOps et sécurité"
+          ],
+          "competences_techniques": [
+            "Python avancé et bonnes pratiques d’ingénierie logicielle (tests, patterns, CI/CD, observabilité)",
+            "Maîtrise de frameworks ML et deep learning (scikit-learn, TensorFlow, PyTorch)",
+            "Connaissance des LLMs et transformers (fine-tuning, prompt engineering, RAG)",
+            "MLOps : conception de pipelines de training et déploiement, gestion des versions de modèles et de données",
+            "Déploiement de modèles : REST/gRPC, batch inference, streaming inference",
+            "Optimisation : quantization, pruning, distillation, ONNX, TensorRT, optimisation GPU",
+            "Monitoring de modèles (dérive de données, dérive de labels, performance en production, fairness)",
+            "Cloud AI : SageMaker, Vertex AI, Azure ML, Databricks ML",
+            "Bases solides en statistiques, ML classique et deep learning",
+            "Notions de sécurité spécifiques à l’IA (attaques adversariales, prompt injection pour LLMs)"
+          ],
+          "outils_technologies": [
+            "scikit-learn, XGBoost, LightGBM",
+            "TensorFlow, Keras, PyTorch",
+            "Hugging Face (Transformers, PEFT), LangChain, LlamaIndex, APIs OpenAI/Anthropic",
+            "MLflow, Kubeflow, ZenML, DVC, Weights & Biases",
+            "FastAPI, Flask, TorchServe, TensorFlow Serving, Triton Inference Server, BentoML",
+            "GitHub Actions, GitLab CI, Argo CD, Tekton",
+            "Docker, Kubernetes, Helm, GPU sur cloud",
+            "Prometheus, Grafana, outils de model monitoring spécialisés"
+          ],
+          "competences_soft": [
+            "Capacité à arbitrer entre performance modèle et contraintes produit (latence, coûts, maintenance)",
+            "Travail rapproché avec les équipes infra, data engineering et produit",
+            "Sens de la fiabilité, de l’observabilité et de l’automatisation",
+            "Capacité à documenter des systèmes complexes (diagrammes d’architecture, RFC techniques, READMEs)"
+          ],
+          "niveau_etude": "Bac+5 (Master/école d’ingénieur en IA, informatique, math appliquées) ; doctorat utile pour postes de R&D avancés.",
+          "formations_utiles": [
+            "Master IA / ML Engineering",
+            "Formations spécialisées MLOps et architectures cloud-native",
+            "Certifications cloud ML (AWS, GCP, Azure)",
+            "Formations avancées en LLMs, GenAI, optimisation de modèles et systèmes de recommandation"
+          ],
+          "experience_requise": "1–3 ans pour ML Engineer junior, 3–6 ans pour confirmé, 6+ ans pour Staff / Principal ML Engineer."
+        },
+        {
+          "id": "deep_learning_engineer",
+          "nom": "Deep Learning Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Spécialiste des réseaux de neurones profonds, conçoit des architectures deep learning pour la vision, le langage, le son ou les séries temporelles.",
+          "missions_principales": [
+            "Concevoir et entraîner des architectures de réseaux de neurones adaptées aux cas d’usage",
+            "Optimiser les modèles pour la précision, la robustesse et la performance",
+            "Exploiter le GPU et les accélérateurs matériels pour accélérer l’entraînement et l’inférence",
+            "Collaborer avec les équipes produit et recherche sur les approches d’IA avancées",
+            "Documenter et partager les résultats d’expérimentation"
+          ],
+          "competences_techniques": [
+            "Python avancé, POO, bonnes pratiques de code scientifique",
+            "Maîtrise de PyTorch et/ou TensorFlow pour le deep learning",
+            "Connaissance des architectures CNN, RNN, LSTM, transformers, diffusion models",
+            "Optimisation de l’entraînement (schedule de learning rate, régularisation, augmentation de données)",
+            "Utilisation du GPU (CUDA, cuDNN, profiling) et éventuellement TPU",
+            "Gestion de larges datasets (chargement, préprocessing, data loaders optimisés)",
+            "Notions de recherche (lecture et implémentation d’articles récents)",
+            "Suivi d’expériences et reproduction de résultats"
+          ],
+          "outils_technologies": [
+            "PyTorch, TensorFlow, Keras",
+            "Hugging Face Transformers, timm, diffusers",
+            "CUDA, cuDNN, PyTorch Lightning, Accelerate",
+            "Weights & Biases, MLflow, Neptune.ai",
+            "Jupyter, VS Code, environnement GPU (on-prem ou cloud)",
+            "Outils de profiling GPU/CPU"
+          ],
+          "competences_soft": [
+            "Curiosité scientifique, goût pour l’expérimentation",
+            "Capacité à lire et implémenter des papiers de recherche",
+            "Rigueur dans l’évaluation et la réplication de résultats"
+          ],
+          "niveau_etude": "Bac+5 à Bac+8 (Master IA, école d’ingénieur, doctorat en IA/vision/NLP).",
+          "formations_utiles": [
+            "Master spécialisé en deep learning",
+            "Doctorat en IA / vision / NLP",
+            "Formations NVIDIA, fast.ai, MOOCs DL avancés"
+          ],
+          "experience_requise": "1–3 ans en DL appliqué, plus pour les rôles senior/R&D."
+        },
+        {
+          "id": "ai_engineer",
+          "nom": "AI Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Construit des systèmes d’IA end-to-end, combinant modèles, règles, APIs, LLMs et intégrations produit pour répondre à des cas d’usage métiers.",
+          "missions_principales": [
+            "Assembler des composants d’IA (ML classique, deep learning, LLMs, règles, APIs externes) en solutions complètes",
+            "Intégrer les systèmes d’IA dans les produits existants (backend, frontend, workflows métier)",
+            "Optimiser expérience utilisateur, latence et coûts d’inférence",
+            "Assurer la supervision, les logs et la gestion d’erreurs des systèmes IA",
+            "Collaborer avec les équipes produit, design et métier pour définir les fonctionnalités IA"
+          ],
+          "competences_techniques": [
+            "Bon niveau en Python et un langage backend (TypeScript/Node, Java, Go selon le contexte)",
+            "Connaissance de plusieurs familles de modèles (ML, DL, LLMs, systèmes de recommandation)",
+            "Intégration d’APIs d’IA (OpenAI, Anthropic, Vertex AI, Hugging Face Inference)",
+            "Patterns d’applications LLM (RAG, agents, outils, memory, évaluation)",
+            "Déploiement de services IA (APIs, serverless functions, microservices)",
+            "Notions de sécurité applicative (auth, rate limiting, gestion de secrets)"
+          ],
+          "outils_technologies": [
+            "Python, TypeScript/Node.js",
+            "Frameworks web : FastAPI, Flask, Express",
+            "LLM frameworks : LangChain, LlamaIndex, semantic-kernel",
+            "APIs LLM : OpenAI, Anthropic, Gemini, LLaMA via providers",
+            "Vector DB : Pinecone, Weaviate, Qdrant, Redis, PGVector",
+            "Cloud : AWS, GCP, Azure (APIs managées d’IA, serverless)",
+            "Observabilité : OpenTelemetry, Prometheus, Grafana"
+          ],
+          "competences_soft": [
+            "Orientation produit et UX",
+            "Capacité à prototyper rapidement et itérer",
+            "Communication avec designers, PM et métiers"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 (informatique/IA), avec forte appétence pour le développement logiciel.",
+          "formations_utiles": [
+            "Formations en IA appliquée et développement d’applications LLM",
+            "Bootcamps IA fullstack",
+            "Certifications LLM/GenAI proposées par les hyperscalers"
+          ],
+          "experience_requise": "2–5 ans en dev logiciel et/ou ML engineering."
+        },
+        {
+          "id": "data_platform_engineer",
+          "nom": "Data Platform Engineer",
+          "categorie": "Ingénierie data & IA",
+          "description": "Conçoit, construit et maintient la plateforme data/IA globale (outils, services, standards) utilisée par les équipes data et produit.",
+          "missions_principales": [
+            "Concevoir l’architecture globale de la plateforme data/IA",
+            "Packager des services self-service pour les équipes data (environnements, templates, pipelines)",
+            "Gérer l’infrastructure (Kubernetes, cloud, sécurité, monitoring)",
+            "Standardiser les outils (suite MLOps, DataOps, gouvernance)",
+            "Assurer la scalabilité et l’optimisation des coûts de la plateforme"
+          ],
+          "competences_techniques": [
+            "Architecture systèmes distribués",
+            "Maîtrise des principaux composants de la stack data & MLOps",
+            "Cloud computing (AWS/GCP/Azure) orienté data et IA",
+            "Kubernetes, networking, sécurité, observabilité",
+            "Infra as Code (Terraform, Pulumi) et GitOps"
+          ],
+          "outils_technologies": [
+            "Kubernetes, Helm, Istio/Linkerd (selon contexte)",
+            "Terraform, Pulumi, ArgoCD",
+            "Spark, Kafka, data warehouses cloud",
+            "Outils MLOps/DataOps (MLflow, Airflow, dbt, catalogues, quality tools)",
+            "Monitoring : Prometheus, Grafana, Loki"
+          ],
+          "competences_soft": [
+            "Leadership technique transversal",
+            "Capacité à définir des standards et conventions",
+            "Communication avec de multiples équipes",
+            "Vision long terme sur l’architecture"
+          ],
+          "niveau_etude": "Bac+5 (école d’ingénieur / Master informatique, systèmes distribués).",
+          "formations_utiles": [
+            "Formations avancées en cloud & Kubernetes",
+            "Certifications architecte cloud (AWS/GCP/Azure)",
+            "Formations data platform / data mesh"
+          ],
+          "experience_requise": "5+ ans en data engineering/infra, dont expérience significative en architecture."
+        }
+      ]
+    },
+    {
+      "metiers": [
+        {
+          "id": "cdo",
+          "nom": "Chief Data Officer (CDO)",
+          "categorie": "Gouvernance, qualité, protection",
+          "description": "Dirige la stratégie data de l’entreprise. Responsable de la gouvernance, de la valorisation et de la conformité des données pour créer de la valeur business.",
+          "missions_principales": [
+            "Définir et piloter la stratégie data alignée sur les objectifs business",
+            "Superviser la gouvernance des données (qualité, métadonnées, catalogue)",
+            "Garantir la conformité RGPD, AI Act et autres réglementations",
+            "Construire et animer la plateforme data/IA (outils, standards, budget)",
+            "Évangeliser la culture data et mesurer l’impact business des initiatives data",
+            "Collaborer avec C-level (CEO, CIO, CTO, CMO) sur la transformation data-driven"
+          ],
+          "competences_techniques": [
+            "Architecture data et modern data stack (lakehouse, data mesh, data product)",
+            "Gouvernance data (qualité, catalogue, lineage, ownership)",
+            "Conformité RGPD, AI Act, NIST AI RMF, ISO 42001",
+            "Cloud data platforms (AWS, GCP, Azure) et coûts optimisation",
+            "Data product management et data mesh",
+            "AI/ML gouvernance (bias, fairness, explainability, model cards)",
+            "KPI data (ROI data projects, data maturity, adoption metrics)",
+            "Outils de data governance et catalogue"
+          ],
+          "outils_technologies": [
+            "Data catalogs : Collibra, Alation, DataHub, Amundsen, OpenMetadata",
+            "Data governance : Informatica, Talend, Atlan",
+            "Data quality : Great Expectations, Soda, Monte Carlo",
+            "Cloud data platforms : Snowflake, BigQuery, Databricks",
+            "Observabilité data : Monte Carlo, Bigeye",
+            "Outils de conformité : Credo AI, Holistic AI",
+            "BI executive : Tableau, Power BI, Looker"
+          ],
+          "competences_soft": [
+            "Leadership stratégique et vision business",
+            "Capacité à influencer le C-level et à vendre la valeur des données",
+            "Gestion du changement et acculturation data",
+            "Communication claire et storytelling data",
+            "Gestion d’équipe pluridisciplinaire (data scientists, engineers, analysts)"
+          ],
+          "niveau_etude": "Bac+5 (MBA, école d’ingénieur/commerce, Master data science) + expérience significative.",
+          "formations_utiles": [
+            "MBA ou executive education (INSEAD, HEC, etc.)",
+            "Certifications data governance (CDMP, DAMA)",
+            "Formations AI governance et compliance (AI Act, NIST)",
+            "Executive programs data leadership (MIT, Stanford)"
+          ],
+          "experience_requise": "10+ ans en data/analytics, dont 3–5 ans en rôle de gouvernance/leadership data."
+        },
+        {
+          "id": "cao",
+          "nom": "Chief Analytics Officer (CAO)",
+          "categorie": "Gouvernance, qualité, protection",
+          "description": "Dirige la stratégie analytique et décisionnelle. Responsable de la création de valeur par l’analytics et l’IA prédictive.",
+          "missions_principales": [
+            "Définir la roadmap analytics et IA prédictive",
+            "Piloter les projets d’analytics avancés et ML",
+            "Mesurer l’impact business des insights et modèles",
+            "Construire et animer les équipes analytics/data science",
+            "Aligner les priorités analytics avec les objectifs stratégiques"
+          ],
+          "competences_techniques": [
+            "Analytics avancé et machine learning",
+            "Gestion de portefeuille de projets data science",
+            "KPI analytics (ROI, précision modèles, adoption)",
+            "Roadmapping technique et priorisation",
+            "Cloud analytics (Databricks, Snowflake ML, BigQuery ML)"
+          ],
+          "outils_technologies": [
+            "Cloud analytics platforms : Databricks, Snowflake ML, BigQuery ML",
+            "BI avancé : Looker, Tableau, Power BI",
+            "MLOps : MLflow, Vertex AI, SageMaker",
+            "Outils de gestion de projets data (Jira, Asana, Monday)"
+          ],
+          "competences_soft": [
+            "Leadership technique et business",
+            "Storytelling analytics",
+            "Gestion d’équipe data science",
+            "Vision stratégique"
+          ],
+          "niveau_etude": "Bac+5 (Master analytics/data science, école d’ingénieur/commerce).",
+          "formations_utiles": [
+            "Master analytics/data science",
+            "MBA ou executive education",
+            "Certifications cloud analytics"
+          ],
+          "experience_requise": "8+ ans analytics/data science, dont 3+ ans leadership."
+        },
+        {
+          "id": "data_manager",
+          "nom": "Data Manager",
+          "categorie": "Gouvernance, qualité, protection",
+          "description": "Gère les ressources et processus data. Assure la qualité, la disponibilité et la conformité des données au quotidien.",
+          "missions_principales": [
+            "Gérer les inventaires de données et métadonnées",
+            "Assurer la qualité des données selon les standards",
+            "Piloter la conformité et les audits data",
+            "Coordonner les équipes data sur les projets transversaux",
+            "Optimiser les processus de gestion des données"
+          ],
+          "competences_techniques": [
+            "Data quality frameworks et métriques",
+            "Data catalog et lineage",
+            "Conformité RGPD de base",
+            "SQL pour audits et contrôles qualité",
+            "Outils de data governance"
+          ],
+          "outils_technologies": [
+            "Data catalogs : Collibra, Alation, DataHub",
+            "Data quality : Great Expectations, Soda Core",
+            "Excel/Google Sheets avancé",
+            "SQL, BI tools pour audits"
+          ],
+          "competences_soft": [
+            "Organisation et gestion de projet",
+            "Collaboration transversale",
+            "Rigueur et sens du détail"
+          ],
+          "niveau_etude": "Bac+3 à Bac+5 (informatique, gestion, commerce).",
+          "formations_utiles": [
+            "Formations data governance",
+            "Certifications RGPD/data management"
+          ],
+          "experience_requise": "3–7 ans en data/analytique."
+        },
+        {
+          "id": "data_product_manager",
+          "nom": "Data Product Manager",
+          "categorie": "Produits, projets, stratégie",
+          "description": "Gère les produits data comme un produit business (data lake, data mart, API data, ML features). Définit la roadmap et la valeur métier.",
+          "missions_principales": [
+            "Définir la vision et roadmap du produit data",
+            "Prioriser les features selon l’impact business et les besoins des consommateurs data",
+            "Collaborer avec data engineers, analysts et métiers pour définir les spécifications",
+            "Mesurer l’adoption, l’usage et le ROI du produit data",
+            "Évangeliser le produit auprès des consommateurs internes"
+          ],
+          "competences_technences": [
+            "Data product thinking (usage, adoption, métriques produit)",
+            "Compréhension technique de la stack data (warehouse, pipelines, quality)",
+            "Roadmapping et priorisation (RICE, Kano, etc.)",
+            "KPI data products (usage metrics, data freshness, adoption)",
+            "Data mesh et data productisation",
+            "SQL et BI pour valider les hypothèses"
+          ],
+          "outils_technologies": [
+            "Roadmapping : Productboard, Aha!, Jira, Notion",
+            "Prototyping : Figma pour mockups de dashboards/API",
+            "Analytics : Mixpanel, Amplitude pour adoption data",
+            "BI : Looker, Tableau, Power BI",
+            "SQL, dbt pour valider les datasets",
+            "Data catalogs pour discovery"
+          ],
+          "competences_soft": [
+            "Product mindset appliqué aux données",
+            "Communication avec métiers et data teams",
+            "Storytelling data product",
+            "Gestion de stakeholders multiples"
+          ],
+          "niveau_etude": "Bac+5 (école commerce, Master data, école d’ingénieur).",
+          "formations_utiles": [
+            "Formations product management",
+            "Formations data product (Reforge, Product School)",
+            "Certifications product management"
+          ],
+          "experience_requise": "3+ ans product management ou data analytics."
+        },
+        {
+          "id": "ai_product_manager",
+          "nom": "AI Product Manager",
+          "categorie": "Produits, projets, stratégie",
+          "description": "Gère les produits utilisant l’IA (chatbots, systèmes de recommandation, agents IA, outils GenAI). Aligne besoins métier et capacités techniques IA.",
+          "missions_principales": [
+            "Définir la roadmap produit IA",
+            "Prioriser features IA selon ROI, UX et faisabilité technique",
+            "Collaborer avec data scientists, ML engineers et design",
+            "Tester et mesurer l’efficacité des modèles IA (A/B testing, métriques produit)",
+            "Gérer les risques éthiques et réglementaires de l’IA"
+          ],
+          "competences_techniques": [
+            "Compréhension des modèles ML/LLM (capacités, limites, coûts)",
+            "Patterns d’applications IA (RAG, agents, outils, fine-tuning)",
+            "Métriques produit IA (précision, latence, coût d’inférence, satisfaction user)",
+            "UX d’interactions IA (prompts, feedback loops)",
+            "Notions d’éthique IA et compliance AI Act"
+          ],
+          "outils_technologies": [
+            "Productboard, Jira, Aha! pour roadmapping",
+            "Figma pour mockups d’interfaces IA",
+            "Amplitude, Mixpanel pour analytics IA",
+            "APIs LLM : OpenAI, Anthropic, Vertex AI",
+            "LangChain, LlamaIndex pour prototyping",
+            "Prompt engineering tools"
+          ],
+          "competences_soft": [
+            "Product thinking appliqué à l’IA",
+            "Collaboration avec data scientists et ML engineers",
+            "Gestion des attentes sur les capacités IA",
+            "Sensibilité éthique et UX"
+          ],
+          "niveau_etude": "Bac+5 (école commerce, Master IA/data, école d’ingénieur).",
+          "formations_utiles": [
+            "Formations product management IA",
+            "Bootcamps GenAI product",
+            "Certifications LLM/GenAI"
+          ],
+          "experience_requise": "2–4 ans product management + appétence IA."
+        },
+        {
+          "id": "consultant_data",
+          "nom": "Consultant Data",
+          "categorie": "Produits, projets, stratégie",
+          "description": "Conseille les entreprises sur leur transformation data. Diagnostique, propose des architectures et accompagne la mise en œuvre.",
+          "missions_principales": [
+            "Diagnostiquer la maturité data de l’entreprise",
+            "Proposer des architectures data adaptées",
+            "Accompagner la mise en œuvre des projets data",
+            "Former les équipes aux bonnes pratiques",
+            "Mesurer l’impact des transformations data"
+          ],
+          "competences_techniques": [
+            "Data maturity assessment",
+            "Architecture data (lakehouse, data mesh, data fabric)",
+            "Modern data stack",
+            "Cloud migration data",
+            "Data governance frameworks",
+            "ROI calculation pour projets data"
+          ],
+          "outils_technologies": [
+            "Outils d’audit data (Collibra, Talend, Informatica)",
+            "Cloud platforms (AWS, GCP, Azure)",
+            "Modern data stack (dbt, Airflow, Snowflake, etc.)",
+            "Outils de modélisation (ER/Studio, Lucidchart)",
+            "Excel, Power BI pour business cases"
+          ],
+          "competences_soft": [
+            "Consulting mindset",
+            "Communication claire et structurée",
+            "Gestion de projet et stakeholders",
+            "Pédagogie et formation"
+          ],
+          "niveau_etude": "Bac+5 (école d’ingénieur, commerce, Master data).",
+          "formations_utiles": [
+            "Formations consulting data",
+            "Certifications cloud et data engineering",
+            "MBA ou mastère spécialisé"
+          ],
+          "experience_requise": "3–7 ans en data/projects."
+        },
+        {
+          "id": "data_project_manager",
+          "nom": "Chef de Projet Data",
+          "categorie": "Produits, projets, stratégie",
+          "description": "Pilote les projets data de bout en bout. Gère les ressources, risques, budget et livraison des initiatives data.",
+          "missions_principales": [
+            "Planifier et piloter les projets data (scope, planning, budget)",
+            "Gérer les équipes pluridisciplinaires (data engineers, scientists, analysts)",
+            "Suivre les risques et les indicateurs de projet",
+            "Communiquer avec les sponsors et stakeholders",
+            "Assurer la livraison conforme aux attentes"
+          ],
+          "competences_techniques": [
+            "Gestion de projet agile (Scrum, Kanban)",
+            "Compréhension technique data/IA",
+            "KPI projet data (data freshness, modèle accuracy, adoption)",
+            "Outils de gestion de projet",
+            "Notions de budget cloud data"
+          ],
+          "outils_technologies": [
+            "Jira, Confluence, Asana, Monday.com",
+            "MS Project, Smartsheet",
+            "Power BI/Tableau pour dashboards projet",
+            "GitHub/GitLab pour suivi technique"
+          ],
+          "competences_soft": [
+            "Leadership d’équipe",
+            "Gestion de stakeholders",
+            "Résolution de conflits",
+            "Communication claire"
+          ],
+          "niveau_etude": "Bac+5 (management, informatique).",
+          "formations_utiles": [
+            "Certifications PMP, Scrum Master, Prince2",
+            "Formations gestion de projet data"
+          ],
+          "experience_requise": "3–7 ans gestion de projet IT/data."
+        },
+        {
+          "id": "data_strategist",
+          "nom": "Data Strategist",
+          "categorie": "Produits, projets, stratégie",
+          "description": "Définit la stratégie data de l’entreprise. Identifie les opportunités data et aligne avec les objectifs business.",
+          "missions_principales": [
+            "Identifier les opportunités data stratégiques",
+            "Construire la roadmap data à 2–3 ans",
+            "Mesurer l’impact business des initiatives data",
+            "Conseiller le C-level sur les investissements data",
+            "Veille technologique et benchmarking data"
+          ],
+          "competences_techniques": [
+            "Data strategy frameworks",
+            "Data maturity models",
+            "ROI calculation data projects",
+            "Benchmarking data stack",
+            "Trends data (data mesh, GenAI, real-time)"
+          ],
+          "outils_technologies": [
+            "Excel, Google Sheets pour business cases",
+            "Power BI/Tableau pour présentations",
+            "Outils de veille (Gartner, Forrester)",
+            "Notion/Confluence pour documentation"
+          ],
+          "competences_soft": [
+            "Vision stratégique",
+            "Communication C-level",
+            "Storytelling business",
+            "Benchmarking"
+          ],
+          "niveau_etude": "Bac+5 (MBA, école commerce, Master data).",
+          "formations_utiles": [
+            "MBA, executive education",
+            "Formations data strategy"
+          ],
+          "experience_requise": "7+ ans data, 3+ ans stratégie."
+        },
+        {
+          "id": "data_steward",
+          "nom": "Data Steward",
+          "categorie": "Gouvernance, qualité, protection",
+          "description": "Assure la qualité et la gouvernance des données au quotidien. Documente, contrôle et corrige les données.",
+          "missions_principales": [
+            "Contrôler la qualité des données selon les règles métier",
+            "Documenter les métadonnées et glossaires",
+            "Corriger les anomalies et erreurs détectées",
+            "Former les contributeurs aux bonnes pratiques data",
+            "Participer aux audits qualité"
+          ],
+          "competences_techniques": [
+            "Data quality rules et métriques",
+            "Métadonnées et glossaires",
+            "SQL pour contrôles qualité",
+            "Excel/Google Sheets avancé",
+            "Outils data quality"
+          ],
+          "outils_technologies": [
+            "Excel, Google Sheets",
+            "SQL",
+            "Data quality tools (Great Expectations, Soda)",
+            "Data catalogs (DataHub, Amundsen)",
+            "Jira pour tracking des issues data"
+          ],
+          "competences_soft": [
+            "Rigueur et attention aux détails",
+            "Collaboration avec métiers et IT",
+            "Pédagogie",
+            "Organisation"
+          ],
+          "niveau_etude": "Bac+2 à Bac+3.",
+          "formations_utiles": [
+            "Formations data quality/governance",
+            "Certifications data stewardship"
+          ],
+          "experience_requise": "1–3 ans data/analytique."
+        }
+      ]
+    },
+    {
+      "metiers": [
+        {
+          "id": "nlp_engineer",
+          "nom": "NLP Engineer / Ingénieur TAL",
+          "categorie": "Spécialistes techniques IA",
+          "description": "Développe des solutions de traitement automatique du langage naturel (chatbots, analyse de sentiments, NER, traduction, résumé).",
+          "missions_principales": [
+            "Construire des pipelines NLP end-to-end (préprocessing, embedding, modèles, postprocessing)",
+            "Fine-tuner des modèles de langage pour des cas d’usage spécifiques",
+            "Implémenter des patterns RAG et agents conversationnels",
+            "Optimiser la performance et la latence des systèmes NLP",
+            "Évaluer la qualité des modèles NLP (BLEU, ROUGE, perplexity, human eval)"
+          ],
+          "competences_techniques": [
+            "Maîtrise des modèles transformers et LLMs",
+            "Fine-tuning et PEFT (LoRA, QLoRA)",
+            "RAG (retrieval-augmented generation) et vector search",
+            "NLP evaluation metrics (BLEU, ROUGE, BERTScore, perplexity)",
+            "Embeddings et vector databases",
+            "Prompt engineering et chain-of-thought",
+            "Langage spécifique (NER, POS tagging, dependency parsing)"
+          ],
+          "outils_technologies": [
+            "Hugging Face Transformers, PEFT",
+            "spaCy, NLTK, Stanford CoreNLP",
+            "LangChain, LlamaIndex, Haystack",
+            "Vector DB : Pinecone, Weaviate, Qdrant, PGVector",
+            "APIs : OpenAI GPT, Anthropic Claude, Google Gemini, Cohere",
+            "FastAPI pour APIs NLP",
+            "Docker/Kubernetes pour déploiement"
+          ],
+          "competences_soft": [
+            "Compréhension linguistique",
+            "Curiosité pour les langues et cultures",
+            "Collaboration avec UX et métiers"
+          ],
+          "niveau_etude": "Bac+5 (Master IA/NLP, école d’ingénieur).",
+          "formations_utiles": [
+            "Master spécialisation NLP",
+            "Formations Hugging Face, spaCy",
+            "MOOCs NLP avancés"
+          ],
+          "experience_requise": "1–3 ans NLP/ML."
+        },
+        {
+          "id": "cv_engineer",
+          "nom": "Computer Vision Engineer",
+          "categorie": "Spécialistes techniques IA",
+          "description": "Développe des solutions d’analyse d’images et vidéos (détection d’objets, segmentation, tracking, 3D reconstruction).",
+          "missions_principales": [
+            "Construire des pipelines vision end-to-end",
+            "Fine-tuner des modèles de vision (YOLO, DETR, Segment Anything)",
+            "Optimiser pour edge devices et temps réel",
+            "Implémenter tracking et multi-object tracking",
+            "Évaluer la précision (mAP, IoU, FPS)"
+          ],
+          "competences_techniques": [
+            "CNN et architectures vision (ResNet, EfficientNet, Vision Transformers)",
+            "Object detection (YOLOv8, YOLOv9, RT-DETR)",
+            "Segmentation (Mask R-CNN, SAM, U-Net)",
+            "Tracking (DeepSORT, ByteTrack)",
+            "Optimisation edge (TensorRT, ONNX Runtime, TFLite)",
+            "3D vision de base (depth estimation, point clouds)"
+          ],
+          "outils_technologies": [
+            "PyTorch, TensorFlow, OpenCV",
+            "Ultralytics YOLO, Detectron2, MMdetection",
+            "Segment Anything Model (SAM)",
+            "ONNX, TensorRT, OpenVINO",
+            "Docker pour déploiement edge",
+            "Roboflow pour datasets et annotation"
+          ],
+          "competences_soft": [
+            "Sens visuel",
+            "Rigueur dans l’évaluation",
+            "Collaboration avec hardware"
+          ],
+          "niveau_etude": "Bac+5 (Master vision/IA).",
+          "formations_utiles": [
+            "Formations CV avancées",
+            "Certifications NVIDIA"
+          ],
+          "experience_requise": "1–3 ans CV/ML."
+        },
+        {
+          "id": "llm_engineer",
+          "nom": "LLM Engineer",
+          "categorie": "Spécialistes techniques IA",
+          "description": "Spécialiste des Large Language Models. Fine-tune, déploie et optimise des modèles de langage pour des cas d’usage spécifiques.",
+          "missions_principales": [
+            "Fine-tuner des LLMs open-source (Llama, Mistral, Mixtral)",
+            "Implémenter RAG, agents, tools et memory",
+            "Optimiser coûts et latence (quantization, distillation)",
+            "Évaluer qualité (human eval, LLM-as-judge)",
+            "Déployer en production (APIs, streaming, edge)"
+          ],
+          "competences_techniques": [
+            "Fine-tuning (PEFT, LoRA, QLoRA)",
+            "RAG (advanced retrieval, reranking, hybrid search)",
+            "Agents LLM (tools calling, reasoning)",
+            "Quantization (bitsandbytes, GPTQ, AWQ)",
+            "Evaluation LLM (human eval, LLM-as-judge, benchmarks)",
+            "Prompt engineering avancé"
+          ],
+          "outils_technologies": [
+            "Hugging Face (Transformers, TRL, PEFT)",
+            "Unsloth, Axolotl pour fine-tuning rapide",
+            "LangChain, LlamaIndex, Haystack",
+            "vLLM, Text Generation Inference pour serving",
+            "Vector DB : Pinecone, Weaviate, Milvus",
+            "Ollama, LM Studio pour local eval"
+          ],
+          "competences_soft": [
+            "Rapidité d’apprentissage",
+            "Expérimentation",
+            "Collaboration"
+          ],
+          "niveau_etude": "Bac+5 (Master IA/NLP).",
+          "formations_utiles": [
+            "Formations Hugging Face LLM",
+            "Bootcamps LLM engineering"
+          ],
+          "experience_requise": "1–2 ans ML/NLP."
+        },
+        {
+          "id": "prompt_engineer",
+          "nom": "Prompt Engineer",
+          "categorie": "Spécialistes techniques IA",
+          "description": "Optimise les prompts et interactions avec les LLMs pour maximiser la qualité et la cohérence des réponses.",
+          "missions_principales": [
+            "Concevoir des prompts optimisés pour différents LLMs",
+            "Tester et itérer sur les prompts (A/B testing)",
+            "Créer des templates et patterns réutilisables",
+            "Former les équipes aux bonnes pratiques de prompting",
+            "Mesurer l’efficacité des prompts (qualité, coût, latence)"
+          ],
+          "competences_techniques": [
+            "Prompt engineering techniques (chain-of-thought, few-shot, tree-of-thoughts)",
+            "Compréhension des capacités/limites des différents LLMs",
+            "A/B testing de prompts",
+            "Métriques d’évaluation (human eval, LLM-as-judge)"
+          ],
+          "outils_technologies": [
+            "Promptfoo, LangSmith, PromptLayer",
+            "OpenAI Playground, Anthropic Console",
+            "LangChain, LlamaIndex pour templating",
+            "Jupyter pour experimentation"
+          ],
+          "competences_soft": [
+            "Créativité linguistique",
+            "Sens analytique",
+            "Pédagogie"
+          ],
+          "niveau_etude": "Bac+3 minimum.",
+          "formations_utiles": [
+            "Bootcamps prompt engineering",
+            "Cours OpenAI/Anthropic"
+          ],
+          "experience_requise": "0–1 an."
+        },
+        {
+          "id": "data_viz_specialist",
+          "nom": "Data Visualisation Specialist",
+          "categorie": "Visualisation, décisionnel, métier",
+          "description": "Crée des visualisations impactantes et narratives pour communiquer les insights data de manière accessible et persuasive.",
+          "missions_principales": [
+            "Concevoir des visualisations adaptées au message et au public",
+            "Créer des dashboards interactifs et storytelling data",
+            "Optimiser l’UX et l’accessibilité des visualisations",
+            "Collaborer avec data analysts et métiers",
+            "Produire des présentations data impactantes"
+          ],
+          "competences_techniques": [
+            "Principes de data visualization (Tufte, Cleveland)",
+            "Design graphique et UX/UI pour data",
+            "Utilisation avancée des outils de visualisation",
+            "SQL pour préparation des datasets viz",
+            "Animation et interactivité data"
+          ],
+          "outils_technologies": [
+            "Tableau, Power BI, Looker",
+            "D3.js, Observable, Vega-Lite",
+            "Figma pour design",
+            "Flourish, Datawrapper pour storytelling",
+            "ggplot2, Plotly pour Python/R"
+          ],
+          "competences_soft": [
+            "Sens esthétique et créativité",
+            "Storytelling data",
+            "Compréhension du public cible"
+          ],
+          "niveau_etude": "Bac+3 (design, informatique).",
+          "formations_utiles": [
+            "Formations data visualization",
+            "Certifications Tableau/Power BI"
+          ],
+          "experience_requise": "1–3 ans."
+        },
+        {
+          "id": "data_architect",
+          "nom": "Data Architect",
+          "categorie": "Infrastructure et sécurité",
+          "description": "Conçoit l’architecture globale des systèmes de données (data lake, warehouse, pipelines, gouvernance) pour répondre aux besoins actuels et futurs.",
+          "missions_principales": [
+            "Définir l’architecture data stratégique",
+            "Choisir les technologies adaptées (lakehouse vs warehouse, on-prem vs cloud)",
+            "Modéliser les données (data modeling, schemas)",
+            "Garantir scalabilité, performance, coûts",
+            "Documenter l’architecture et standards"
+          ],
+          "competences_techniques": [
+            "Architecture lakehouse/data mesh/data fabric",
+            "Modélisation de données (étoile, data vault, Kimball)",
+            "Benchmarking technologies data",
+            "Optimisation coûts/performance cloud",
+            "Data governance architecture"
+          ],
+          "outils_technologies": [
+            "Snowflake, Databricks, BigQuery",
+            "Terraform, Lucidchart, dbt",
+            "Collibra, Alation pour gouvernance"
+          ],
+          "competences_soft": [
+            "Vision stratégique",
+            "Communication technique/business",
+            "Benchmarking"
+          ],
+          "niveau_etude": "Bac+5 (école d’ingénieur).",
+          "formations_utiles": [
+            "Certifications architecte cloud",
+            "Formations data modeling"
+          ],
+          "experience_requise": "5+ ans data engineering."
+        },
+        {
+          "id": "ai_ethics_specialist",
+          "nom": "AI Ethics Specialist",
+          "categorie": "Formation, accompagnement, éthique",
+          "description": "Assure l’éthique et la conformité des systèmes IA. Évalue les risques (bias, fairness, privacy) et propose des solutions responsables.",
+          "missions_principales": [
+            "Auditer les modèles IA (bias, fairness, robustness)",
+            "Implémenter des garde-fous et mitigations",
+            "Rédiger model cards et documentation éthique",
+            "Former aux bonnes pratiques IA responsable",
+            "Conseiller sur AI Act et conformité"
+          ],
+          "competences_techniques": [
+            "Bias detection et mitigation",
+            "Fairness metrics (demographic parity, equal opportunity)",
+            "Explainability (SHAP, LIME, counterfactuals)",
+            "AI Act classification et obligations",
+            "Privacy (DP-SGD, federated learning)"
+          ],
+          "outils_technologies": [
+            "IBM AI Fairness 360, Aequitas",
+            "SHAP, LIME pour explainability",
+            "Credo AI, Holistic AI pour gouvernance",
+            "What-If Tool (Google), Facets",
+            "AI FactSheets 360"
+          ],
+          "competences_soft": [
+            "Pensée critique éthique",
+            "Communication interdisciplinaire",
+            "Pédagogie"
+          ],
+          "niveau_etude": "Bac+5 (éthique, droit, informatique).",
+          "formations_utiles": [
+            "Certifications AI ethics/governance",
+            "Formations AI Act"
+          ],
+          "experience_requise": "2–5 ans IA/compliance."
+        },
+        {
+          "id": "dpo",
+          "nom": "Data Protection Officer (DPO)",
+          "categorie": "Gouvernance, qualité, protection",
+          "description": "Garantit la conformité RGPD et protection des données personnelles dans les projets data/IA.",
+          "missions_principales": [
+            "Effectuer les DPIA (Data Protection Impact Assessment)",
+            "Gérer les demandes d’exercice des droits (droit à l’oubli, etc.)",
+            "Conseiller sur la conformité des traitements",
+            "Auditer les systèmes de données",
+            "Former aux obligations RGPD"
+          ],
+          "competences_techniques": [
+            "RGPD, CNIL, ePrivacy",
+            "Data mapping et register of processing",
+            "DPIA, transferts internationaux",
+            "Sécurité des données (encryption, pseudonymisation)"
+          ],
+          "outils_technologies": [
+            "Outils compliance (OneTrust, TrustArc)",
+            "Excel pour data mapping",
+            "Outils de chiffrement"
+          ],
+          "competences_soft": [
+            "Rigueur juridique",
+            "Communication",
+            "Pédagogie"
+          ],
+          "niveau_etude": "Bac+5 (droit, gestion).",
+          "formations_utiles": [
+            "Certifications DPO/RGPD"
+          ],
+          "experience_requise": "3+ ans compliance."
+        }
+      ]
+    }
+  ]
+}
