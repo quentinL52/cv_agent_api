@@ -15,7 +15,7 @@ from src.parser_flow.CV_agent_flow import CVAgentOrchestrator
 logger = logging.getLogger(__name__)
 
 
-async def parse_cv_enriched(pdf_path: str, file_name: str = "") -> Dict[str, Any]:
+async def parse_cv(pdf_path: str, file_name: str = "") -> Dict[str, Any]:
     """
     Parse un CV avec extraction + analyse complète.
 
