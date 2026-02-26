@@ -4,12 +4,6 @@ split_cv_task:
   description: >
     Découpe le CV en sections JSON. Copie le texte brut sans reformuler ni résumer.
 
-    TEXTE PRINCIPAL DU CV (Markdown) :
-    "{cv_content}"
-
-    TEXTE BRUT PREMIÈRE PAGE (extraction directe, utilise-le si le texte principal manque le header) :
-    "{cv_raw_start}"
-
     RÈGLES STRICTES :
     1. "header" : Les premières lignes du CV — contient le NOM du candidat, son TITRE/POSTE, ses coordonnées (email, téléphone, LinkedIn, ville). Cherche en priorité dans le TEXTE BRUT PREMIÈRE PAGE car le Markdown peut mal ordonner le header.
     2. "experiences" : Uniquement l'historique professionnel (Entreprise, Poste, Dates, missions).
@@ -17,6 +11,12 @@ split_cv_task:
     4. "skills" : Listes de compétences, langages, outils.
     5. "education" : Diplômes et formations.
     6. "languages" : Langues mentionnées avec leur niveau (Français, Anglais, etc.).
+
+    TEXTE PRINCIPAL DU CV (Markdown) :
+    "{cv_content}"
+
+    TEXTE BRUT PREMIÈRE PAGE (extraction directe, utilise-le si le texte principal manque le header) :
+    "{cv_raw_start}"
   expected_output: >
     Un objet JSON valide strictement structuré ainsi :
     {{
@@ -32,18 +32,22 @@ split_cv_task:
 
 skills_task:
   description: >
-    Analyse les sections suivantes pour lister les compétences avec leur contexte d'utilisation.
-    Expériences : {experiences}
-    Projets : {projects}
-    academique : {education}
-    Skills Explicit : {skills}
-    
     RÈGLES DE CLASSIFICATION :
     1. 'hard_skills' : Outils, langages, technos (ex: Python, SQL, Excel, React, FastAPI, LangChain).
        IMPORTANT: Inclure TOUTES les technologies mentionnées dans les projets, expériences et académique.
     2. 'soft_skills' : Qualités humaines (ex: Leadership, Communication, Rigueur).
     3. NE PAS INVENTER. Si ce n'est pas écrit, ne l'ajoute pas.
-    4. Pour chaque skill, indique si elle est présente dans une expérience, un projet, academique, sans contexte, si elle est presente dans plusieurs section indique le .
+    4. EXHAUSTIVITÉ ABSOLUE : Traque RIGOUREUSEMENT chaque logiciel, langage, bibliothèque ou concept technique (ex: BeautifulSoup4, Scraping, Pandas, etc.). Ne laisse RIEN passer.
+    5. 'skills_with_context' : Tu DOIS obligatoirement analyser la LISTE COMPLÈTE des 'hard_skills' extraites.
+       RÈGLE ABSOLUE : Pour CHAQUE compétence, tu dois EFFECTUER UNE RECHERCHE TEXTUELLE RIGOUREUSE (comme un CTRL+F) dans le texte brut des Expériences, des Projets et de l'Éducation.
+       De nombreuses compétences présentes dans les 'Expériences' sont souvent manquées. Prends le temps de lire chaque phrase des expériences !
+       Si la compétence est trouvée, précise son contexte (ex: "expérience", "projet", "académique", "expérience, projet").
+       Si et SEULEMENT SI tu as lu attentivement tous les autres textes et qu'elle n'est VRAIMENT mentionnée nulle part ailleurs que dans la section Compétences, alors attribue-lui le contexte "sans contexte". Ne mets JAMAIS "sans contexte" par erreur si la compétence se trouve dans l'expérience.
+    Analyse les sections suivantes pour lister les compétences avec leur contexte d'utilisation :
+    Expériences : {experiences}
+    Projets : {projects}
+    Education : {education}
+    Skills Explicites : {skills}
   expected_output: >
     JSON : {{
       "hard_skills": ["Python", "SQL", "FastAPI"],
@@ -56,8 +60,7 @@ skills_task:
 
 experience_task:
   description: >
-    Tu es un extracteur de données strict. Analyse ce texte d'expérience :
-    "{experiences}"
+    Tu es un extracteur de données strict.
     
     Pour CHAQUE poste identifié :
     1. Titre du poste
@@ -66,13 +69,14 @@ experience_task:
     4. Description (Liste des tâches/responsabilités)
     
     RÈGLE : Ne confonds PAS les projets scolaires avec des expériences pro. Les stages et alternances SONT des expériences.
+
+    Analyse ce texte d'expérience :
+    "{experiences}"
   expected_output: >
     Liste JSON : [{{"Poste": "...", "Entreprise": "...", "start_date": "...", "end_date": "...", "responsabilités": ["task 1", "task 2"]}}]
 
 project_task:
   description: >
-    Analyse ce texte de projets : "{projects}"
-    
     RÈGLES STRICTES DE STRUCTURE :
     Chaque projet DOIT avoir exactement ces clés :
     - "title" : Titre du projet
@@ -83,6 +87,10 @@ project_task:
     Sépare :
     - "professional" : Projets réalisés en entreprise (distincts du simple poste).
     - "personal" : Projets perso, Github, Hackathons, Écoles.
+    
+    Si une liste est vide, renvoie [].
+
+    Analyse ce texte de projets : "{projects}"
     
     Si une liste est vide, renvoie [].
   expected_output: >
@@ -102,26 +110,30 @@ education_task:
 
 reconversion_task:
   description: >
-    Analyse les expériences : "{experiences}"
-    Et "{education}"
     Le candidat est-il en reconversion ? (Changement majeur de domaine récent).
-    indique aussi le contexte (de quelle domaine ou poste vient t'il et quelle est sa réortientation)
-    pour le contexte de reconversion tu dois prendre en compte les experience et les education.
+    Indique aussi le contexte (de quel domaine ou poste vient-il et quelle est sa réorientation).
+    RÈGLE ABSOLUE : Tu DOIS extraire la DATE de début de cette reconversion.
+    Cette date correspond au mois et à l'année de début de la formation de reconversion OU du premier emploi dans le nouveau domaine.
+    Pour le contexte de reconversion et la date, base-toi sur les expériences et l'éducation.
+
+    Analyse les expériences : "{experiences}"
+    Et l'éducation : "{education}"
   expected_output: >
-    JSON : {{"reconversion_analysis": {{"is_reconversion": true/false, "context": "..."}}
+    JSON : {{"reconversion_analysis": {{"is_reconversion": true/false, "context": "...", "date_reconversion": "YYYY-MM ou null"}}}}
 
 etudiant_task:
   description: >
-    Analyse la section education : "{education}"
-    Nous sommes le {current_date}.
-    Le candidat est-il ACTUELLEMENT étuditant ? 
+    Le candidat est-il ACTUELLEMENT étudiant ? 
     CRITÈRES :
     1. Regarde les dates de fin des formations.
     2. Identifie la date de fin de la formation la plus récente.
-    3. Si cette date est FUTURE par rapport à {current_date} ou si c'est écrit "En cours" / "Présent", alors is_etudiant = true.
+    3. Si cette date est FUTURE par rapport à la date actuelle ou si c'est écrit "En cours" / "Présent", alors is_etudiant = true.
     4. Récupère explicitement cette date sous le champ 'latest_education_end_date' (format YYYY-MM-DD ou MM/YYYY ou "Present").
-    5. indique aussi le niveau d'études (ex: bac+2, bac+5) du diplome le plus proche de {current_date}.
+    5. indique aussi le niveau d'études (ex: bac+2, bac+5) du diplome le plus proche de la date actuelle.
     6. indique la spécialité exemple: ingenieur IA, data analyste, devellopeur frontend, etc.
+
+    Nous sommes le {current_date}.
+    Analyse la section education : "{education}"
   expected_output: >
     JSON : {{"etudiant_analysis": {{"is_etudiant": true/false, "niveau_etudes": "bac+5", "specialite": "data analyste", "latest_education_end_date": "YYYY-MM-DD"}}}}
 
@@ -129,15 +141,15 @@ language_task:
   description: >
     Identifie toutes les langues parlées par le candidat.
 
-    SECTION LANGUES (extraite) : "{languages}"
-
-    DÉBUT DU CV (pour détecter la langue de rédaction) : "{cv_raw_start}"
-
     RÈGLES :
     1. Extrais toutes les langues et niveaux présents dans la SECTION LANGUES.
     2. Détecte la langue dans laquelle le CV est rédigé à partir du DÉBUT DU CV.
     3. Si la langue du CV n'est PAS dans la SECTION LANGUES, ajoute-la avec le niveau "Natif" ou "Langue maternelle".
     4. Ne jamais omettre la langue du CV.
+
+    SECTION LANGUES (extraite) : "{languages}"
+
+    DÉBUT DU CV (pour détecter la langue de rédaction) : "{cv_raw_start}"
   expected_output: >
     JSON : {{"langues": [{{"langue": "Français", "niveau": "Natif"}}, {{"langue": "Anglais", "niveau": "B2"}}]}}
 
@@ -145,17 +157,17 @@ identity_task:
   description: >
     Extrais le prénom du candidat.
 
-    HEADER DU CV (nom, titre, contact) : "{header}"
-
-    TEXTE BRUT DÉBUT DU CV : "{cv_raw_start}"
-
-    NOM DU FICHIER (indice très fiable, souvent au format NOM_PRENOM_...) : "{file_name}"
-
     RÈGLES :
     1. Cherche le prénom dans le HEADER, puis dans le TEXTE BRUT DÉBUT DU CV.
     2. Le NOM DU FICHIER est un indice fort : "ANISSA_KACEM_..." → prénom = "Anissa".
     3. Ne jamais inventer. Formate avec majuscule initiale.
     4. Si impossible à trouver, retourne null.
+
+    HEADER DU CV (nom, titre, contact) : "{header}"
+
+    TEXTE BRUT DÉBUT DU CV : "{cv_raw_start}"
+
+    NOM DU FICHIER (indice très fiable, souvent au format NOM_PRENOM_...) : "{file_name}"
   expected_output: >
     JSON : {{"first_name": "..."}}
 
@@ -163,15 +175,15 @@ poste_visé_task:
   description: >
     Extrais le titre de poste visé tel qu'il est écrit dans l'en-tête du CV.
 
-    HEADER DU CV (extrait par le splitter) : "{header}"
-
-    TEXTE BRUT DÉBUT DU CV (fallback si header vide) : "{cv_raw_start}"
-
     RÈGLES :
     1. Le titre de poste se trouve juste après le nom du candidat (ex: "Business Analyst", "Data Engineer").
     2. Copie le titre EXACTEMENT tel qu'il est écrit, sans reformuler.
     3. Si le header est vide, cherche dans le TEXTE BRUT DÉBUT DU CV.
     4. Ne jamais inventer un titre.
+
+    HEADER DU CV (extrait par le splitter) : "{header}"
+
+    TEXTE BRUT DÉBUT DU CV (fallback si header vide) : "{cv_raw_start}"
   expected_output: >
     JSON : {{
       "poste_vise": "Le titre EXACT tel qu'écrit sur le CV",
@@ -184,35 +196,15 @@ metier_matching_task:
   description: >
     Compare le profil du candidat avec le référentiel de métiers pour recommander les 3 postes les plus adaptés.
 
-    POSTE VISÉ PAR LE CANDIDAT : "{poste_vise}"
-
-    COMPÉTENCES DU CANDIDAT :
-    Hard Skills : {hard_skills}
-    Soft Skills : {soft_skills}
-
-    DOMAINES DE COMPÉTENCES IDENTIFIÉS : {skill_domains}
-
-    MÉTHODOLOGIES DU CANDIDAT : {methodologies}
-
-    EXPÉRIENCES : {experiences_summary}
-
-    PROJETS : {projects_summary}
-
-    RECONVERSION : {reconversion_data}
-
-    RÉFÉRENTIEL DE MÉTIERS :
-    {metiers_reference}
-
     RÈGLES D'ANALYSE :
-    IMPORTANT : Tu dois évaluer CHAQUE métier présent dans le RÉFÉRENTIEL DE MÉTIERS ci-dessus,
+    IMPORTANT : Tu dois évaluer CHAQUE métier présent dans le RÉFÉRENTIEL DE MÉTIERS,
     sans en omettre aucun. Le top 3 final doit être basé sur l'évaluation exhaustive de tous
     les métiers listés. Ne jamais présélectionner ou ignorer des métiers a priori.
 
     1. Pour CHAQUE métier du référentiel, calcule un score de matching (0-100) basé sur :
-       - Couverture des compétences techniques requises (35%)
-       - Couverture des outils/technologies (25%)
+       - Couverture des compétences techniques requises (40%)
+       - Couverture des outils/technologies (30%)
        - Adéquation des expériences et projets (20%)
-       - Maîtrise des méthodologies de travail : Agile, Scrum, DevOps, CI/CD, TDD, Design Thinking (10%)
        - Cohérence avec le niveau d'études et l'expérience requise (10%)
     2. Utilise le mapping de domaines pour comprendre les liens implicites (ex: Metabase → BI,
        LangChain → LLM Engineering, Power BI → BI Analyst, Scikit-learn → Data Science).
@@ -221,9 +213,26 @@ metier_matching_task:
        communication internationale → travail en équipe multiculturelle).
     4. Recommande les 3 métiers avec le MEILLEUR score parmi l'ensemble du référentiel évalué.
     5. PONDÉRATION TEMPORELLE (CRITIQUE) : Accorde un poids double (x2) aux technologies et compétences issues des expériences et projets les plus récents, ainsi qu'à la formation en cours. Le profil actuel d'un candidat est défini par ce qu'il fait aujourd'hui, pas par son historique lointain.
-    6. Pour chaque métier recommandé, liste les compétences matchées, manquantes, et les méthodologies.
+    6. Pour chaque métier recommandé, liste les compétences matchées et manquantes.
     7. Si le poste visé par le candidat ne fait pas partie du top 3, explique pourquoi.
     8. Fournis une analyse détaillée de l'adéquation du poste visé avec le profil.
+
+    RÉFÉRENTIEL DE MÉTIERS :
+    {metiers_reference}
+
+    EN-TÊTE DU CV (pour le poste visé) : "{header}"
+
+    SECTION COMPÉTENCES :
+    {skills}
+
+    SECTION EXPÉRIENCES :
+    {experiences}
+
+    SECTION PROJETS :
+    {projects}
+
+    SECTION FORMATION (utile pour détecter les reconversions):
+    {education}
   expected_output: >
     JSON : {{
       "postes_recommandes": [
@@ -240,7 +249,6 @@ metier_matching_task:
           }},
           "competences_matchees": ["SQL", "Python", "Power BI"],
           "competences_manquantes": ["Looker", "dbt"],
-          "methodologies_matchees": ["Agile", "Scrum"],
           "justification": "Le profil couvre 85% des compétences requises..."
         }}
       ],
@@ -253,22 +261,14 @@ cv_quality_task:
     Évalue la qualité globale du CV en appliquant les critères de bonnes pratiques CV tech 2025,
     adaptés au niveau de séniorité du candidat.
 
-    CV COMPLET (texte Markdown) : "{cv_full_text}"
-
-    TEXTE BRUT DU CV (première page, pour détecter les URLs et liens) : "{cv_raw_start}"
-
-    COMPÉTENCES EXTRAITES AVEC CONTEXTE : {skills_with_context}
-    EXPÉRIENCES : {experiences_summary}
-    PROJETS : {projects_summary}
-    NIVEAU DE SÉNIORITÉ : "{niveau_seniorite}"
-    RECONVERSION : {reconversion_data}
-
     CRITÈRES D'ÉVALUATION (score sur 100 pour chaque) :
 
     1. COMPATIBILITÉ ATS (20 points) :
-       - Structure claire avec sections standards ?
-       - Pas de mise en page complexe qui bloquerait un ATS ?
-       - Mots-clés techniques bien présents ?
+       - ÉVALUATION STRICTE ET CRITIQUE : Ne donne jamais un score parfait sans preuve.
+       - Les noms des sections principales sont-ils standards (Expériences, Formations, Projets, Compétences) ou atypiques ? Si atypiques, pénalise. (RÈGLE ABSOLUE : N'évalue PAS et ne pénalise JAMAIS les sections d'introduction courtes comme "Profil", "À propos", "Résumé" ou "Profil atypique". Ignore-les totalement pour ce critère).
+       - Les mots-clés techniques sont-ils contextuels ou simplement entassés de manière artificielle ?
+       - Indique EXPLICITEMENT ce qui ne va pas (ex: "Nom de section 'Mon Parcours' au lieu de 'Expériences'", "Mots-clés empilés sans lien avec les expériences").
+       - Fournis des points d'amélioration spécifiques et factuels.
 
     2. QUANTIFICATION DES RÉSULTATS (25 points) :
        - Les expériences mentionnent-elles des MÉTRIQUES TECHNIQUES SPÉCIFIQUES ?
@@ -281,11 +281,13 @@ cv_quality_task:
          en fonction de ses expériences et projets RÉELS (pas des conseils génériques).
 
     3. STRUCTURE ET LISIBILITÉ (15 points) :
-       - Le CV tient-il en 1-2 pages ?
-       - Les sections sont-elles bien séparées et la chronologie claire ?
-       - STRUCTURATION DES COMPÉTENCES : Les compétences sont-elles regroupées par catégories
-         logiques (Langages, Frameworks, BDD, DevOps/Cloud, Méthodologies) ou en liste plate ?
-         Une structuration par catégories est fortement recommandée pour les filtres ATS.
+       - ANALYSE CRITIQUE BASÉE SUR LE TEXTE : Ne suppose pas que le CV est beau. Évalue la structure à partir du texte extrait.
+       - RÈGLE ABSOLUE SUR LA FORME : N'évalue JAMAIS la présence ou l'absence de listes à puces/tirets. Le parsing supprime souvent la mise en forme, ne fais donc aucune remarque sur des "blocs de texte illisibles".
+       - L'ordre chronologique inverse est-il respecté dans les expériences et formations ? Si non, pénalise sévèrement.
+       - RÈGLE LONGUEUR : Utilise la donnée `NOMBRE DE PAGES`. Un profil < 7 ans d'expérience devrait tenir sur 1 page. Pénalise si > 2 pages.
+       - RÈGLE POSTE VISÉ (CRITIQUE) : Si `POSTE VISÉ` est "Non identifié", c'est une ERREUR MAJEURE. Baisse drastiquement la note de structure et signale-le comme un RED FLAG (le recruteur doit identifier le but du CV en 3 secondes).
+       - STRUCTURATION DES COMPÉTENCES : Les compétences sont-elles regroupées par catégories logiques (Langages, Frameworks, BDD, DevOps/Cloud) ou en liste plate ? Une structuration par catégories est fortement recommandée pour les filtres ATS.
+       - Fournis des conseils d'amélioration FACTUELS sur la structure.
 
     4. PRÉSENTATION DES PROJETS (20 points) :
        - Chaque projet a-t-il un titre, des technos, et des résultats ?
@@ -294,10 +296,9 @@ cv_quality_task:
 
     5. PREUVES DE COMPÉTENCES (20 points) :
        - RÈGLE CRITIQUE : Une compétence est considérée "sans preuve" UNIQUEMENT si elle
-         apparaît EXCLUSIVEMENT dans la section Skills/Compétences sans aucune mention dans
-         les expériences OU les projets. Utilise "skills_with_context" : si le contexte est
-         "projet", "expérience", "académique" ou "projet+expérience", la compétence EST prouvée —
-         ne la signale pas. Ne signale que les skills dont le contexte est "sans contexte".
+         apparaît EXCLUSIVEMENT dans la section Compétences sans aucune mention dans
+         les expériences OU les projets. Tu dois vérifier par toi-même (par analyse textuelle)
+         si les compétences listées apparaissent ailleurs. Ne signale que les skills qui n'ont "aucun contexte".
        - DÉTECTION DES LIENS : Cherche les URLs dans le CV Markdown ET dans le texte brut.
          Les liens peuvent apparaître sous forme de Markdown [texte](url), de texte brut
          (github.com/..., linkedin.com/...) ou dans le header. Signale les liens PRÉSENTS,
@@ -305,7 +306,7 @@ cv_quality_task:
        - Pour les RECONVERSIONS : les compétences transférables (management, optimisation,
          communication, gestion budgétaire) sont-elles mises en valeur et reliées au nouveau domaine ?
 
-    ADAPTATION AU NIVEAU DE SÉNIORITÉ "{niveau_seniorite}" :
+    ADAPTATION AU NIVEAU DE SÉNIORITÉ :
     - Si JUNIOR : valorise les projets personnels, formations, stages bien décrits.
     - Si CONFIRMÉ : exige des résultats mesurables, progression, responsabilités.
     - Si SENIOR/STAFF : vérifie la présence de choix architecturaux et compromis
@@ -313,11 +314,21 @@ cv_quality_task:
       gestion de la scalabilité, impact organisationnel au-delà du code.
 
     RED FLAGS À DÉTECTER :
-    - Skills listées UNIQUEMENT dans la section skills sans aucune mention dans expériences/projets
+    - DÉTECTION STRICTE DES COMPÉTENCES SANS PREUVE : Tu DOIS t'appuyer uniquement sur ton évaluation de "preuves_competences". S'il y a des compétences listées dans "skills_sans_preuve", ajoute un red flag. Sinon, n'ajoute pas de red flag pour ce sujet.
     - Trous inexpliqués dans le parcours
     - Jargon excessif ou buzzwords sans substance
     - Incohérence entre compétences listées et projets/expériences
     - Section compétences en liste plate non catégorisée
+
+    DONNÉES À ÉVALUER :
+    EN-TÊTE DU CV (pour le poste visé et niveau de séniorité) : "{header}"
+    NOMBRE DE PAGES : {page_count}
+    CV COMPLET (texte Markdown) : "{cv_full_text}"
+    TEXTE BRUT DU CV (première page, pour détecter les URLs et liens) : "{cv_raw_start}"
+    SECTION COMPÉTENCES : "{skills}"
+    SECTION EXPÉRIENCES : "{experiences}"
+    SECTION PROJETS : "{projects}"
+    SECTION FORMATIONS : "{education}"
   expected_output: >
     JSON : {{
       "score_global": 72,
@@ -334,49 +345,47 @@ cv_quality_task:
 
 project_analysis_task:
   description: >
-    Évalue CHAQUE projet du CV et détermine leur pertinence pour le poste visé.
+    Évalue CHAQUE projet du CV et détermine la qualité technique et l'impact.
 
-    POSTE VISÉ : "{poste_vise}"
+    Pour CHAQUE projet, tu dois scorer sur 10 avec une justification courte et factuelle (preuve tirée du CV) sur les 7 critères suivants :
+    1. Pertinence & Alignement : Correspondance avec le poste visé (multi-agents, RAG, recrutement tech, pipelines, GenAI).
+    2. Complexité Technique & Architecture : Niveau réel d'intégration (7 agents orchestrés ? pipeline complet ingestion→monitoring ? custom vs simple CrewAI/LangChain ?).
+    3. Stack & Maîtrise : Modernité, cohérence, diversité raisonnable vs "tech soup".
+    4. Innovation & Originalité : Valeur ajoutée réelle vs "j'ai collé des libs à la mode" (Ex : scoring multi-dimensionnel + détection fraude = fort ; simple wrapper RAG = faible).
+    5. Impact & Résultats Mesurables : Chiffres concrets (+40 %, 2000 offres, 30 % moins d'étapes...) et crédibilité de la mesure.
+    6. Ownership & Exécution : End-to-end (idea → business plan → dev → déploiement → monitoring). Méthodologies affichées (Design Thinking, Scrum...).
+    7. Maturité Production & Qualité : Monitoring, coût/latence, tests, sécurité, RGPD, scaling, users réels vs démo/prototype.
 
-    RÉFÉRENTIEL DU MÉTIER VISÉ (compétences et outils attendus) :
-    {metier_reference_detail}
+    Méthode pour un avis CLAIR et CRITIQUE :
+    - Être factuel d'abord (preuve du CV).
+    - Donner du positif spécifique.
+    - Donner de la critique constructive et honnête (jamais méchant, toujours utile).
+    - Éviter le fanboying et le "tout est génial".
+    - Terminer par un verdict tranché.
 
-    PROJETS PROFESSIONNELS : {professional_projects}
-    PROJETS PERSONNELS : {personal_projects}
-
-    RECONVERSION : {reconversion_data}
-
-    Pour CHAQUE projet, fournis :
-    1. score_coherence (0-100) : cohérence avec le poste visé et le référentiel métier
-    2. rang : classement par ORDRE DE PERTINENCE pour le poste (1 = le plus pertinent pour ce poste)
-    3. raison : explication CONCISE de pourquoi ce projet doit être mis en avant (ou pas) pour ce poste visé
-    4. points_forts : atouts concrets (technologies démontrées, impact, qualité)
-    5. points_amelioration : ce qui manque pour convaincre (métriques, résultats, détails techniques)
-    6. conseils_description : conseils CONCRETS pour améliorer la description
-       (métriques à ajouter, aspects techniques à détailler, résultats à valoriser)
-
-    RÈGLES STRICTES :
-    - N'analyse QUE les projets listés dans PROJETS PROFESSIONNELS et PROJETS PERSONNELS.
-    - N'invente AUCUN projet à partir des expériences. Les expériences sont un contexte uniquement.
-    - Si PROJETS PROFESSIONNELS et PROJETS PERSONNELS sont vides, retourne "analyse_projets": [].
-    - Le nombre d'entrées dans "analyse_projets" doit correspondre EXACTEMENT au nombre de projets fournis.
-    - Retourne les projets TRIÉS par rang (rang 1 en premier).
+    DONNÉES DU CANDIDAT :
+    EN-TÊTE DU CV (pour déduire le poste visé) : "{header}"
+    PROJETS MENTIONNÉS (texte brut) : {projects}
   expected_output: >
     JSON : {{
       "analyse_projets": [
         {{
-          "titre": "Dashboard RH",
-          "rang": 1,
-          "raison": "Projet BI directement aligné avec les outils et missions du poste visé",
-          "score_coherence": 90,
-          "points_forts": ["SQL et Power BI maîtrisés et démontrés", "Impact mesurable sur les décisions RH"],
-          "points_amelioration": ["Ajouter le volume de données traité", "Mentionner le temps de chargement"],
-          "conseils_description": ["Préciser le volume de données traité (ex: 500k lignes)", "Ajouter une métrique de performance"]
+          "titre": "Nom exact du projet",
+          "resume": "Description ultra-concise + type (Side Project / SaaS / MVP)",
+          "evaluation": {{
+            "pertinence": {{"score": 8, "justification": "..."}},
+            "complexite": {{"score": 7, "justification": "..."}},
+            "stack": {{"score": 9, "justification": "..."}},
+            "innovation": {{"score": 6, "justification": "..."}},
+            "impact": {{"score": 5, "justification": "Aucun chiffre concret"}},
+            "ownership": {{"score": 8, "justification": "..."}},
+            "maturite": {{"score": 4, "justification": "Pas de mention de monitoring ou de tests"}}
+          }},
+          "points_forts": ["...", "..."],
+          "points_vigilance": ["Risque d'over-claim sur...", "Manque de visibilité sur tests"],
+          "note_globale": 67,
+          "verdict_recruteur": "Très bon projet qui démontre une vraie maîtrise agentique... Idéal pour un rôle IA intermédiaire, à creuser en entretien."
         }}
-      ],
-      "coherence_globale": {{
-        "score": 85,
-        "commentaire": "Ensemble de projets cohérent avec le poste visé"
-      }}
+      ]
     }}
 

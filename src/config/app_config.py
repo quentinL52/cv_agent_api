@@ -18,6 +18,17 @@ def load_pdf(pdf_path: str) -> str:
     return pymupdf4llm.to_markdown(pdf_path)
 
 
+def get_pdf_page_count(pdf_path: str) -> int:
+    """Retourne le nombre de pages du PDF."""
+    try:
+        doc = fitz.open(pdf_path)
+        count = doc.page_count
+        doc.close()
+        return count
+    except Exception:
+        return 1
+
+
 def load_pdf_first_page_text(pdf_path: str) -> str:
     """Extrait le texte brut de la première page en ordre de lecture (haut → bas, gauche → droite).
 
@@ -48,9 +59,8 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 def get_big_llm():
     """GPT-4o pour les tâches complexes — max_tokens élevé pour éviter la troncature JSON."""
     return ChatOpenAI(
-        model="gpt-4o",
+        model="gpt-5.2",
         temperature=0.0,
-        max_tokens=16384,
         api_key=OPENAI_API_KEY
     )
 
@@ -58,18 +68,8 @@ def get_big_llm():
 def get_small_llm():
     """GPT-4o-mini pour l'extraction rapide."""
     return ChatOpenAI(
-        model="gpt-4o-mini",
+        model="gpt-4o",
         temperature=0.0,
         max_tokens=1500,
         api_key=OPENAI_API_KEY
-    )
-
-
-def get_fast_llm():
-    """Groq llama-3.1-8b - Le plus rapide."""
-    return ChatGroq(
-        model="groq/llama-3.1-8b-instant",
-        temperature=0.0,
-        max_tokens=1500,
-        groq_api_key=GROQ_API_KEY
     )
