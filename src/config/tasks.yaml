@@ -263,14 +263,14 @@ cv_quality_task:
 
     CRITÈRES D'ÉVALUATION (score sur 100 pour chaque) :
 
-    1. COMPATIBILITÉ ATS (20 points) :
+    1. COMPATIBILITÉ ATS (100 points) :
        - ÉVALUATION STRICTE ET CRITIQUE : Ne donne jamais un score parfait sans preuve.
        - Les noms des sections principales sont-ils standards (Expériences, Formations, Projets, Compétences) ou atypiques ? Si atypiques, pénalise. (RÈGLE ABSOLUE : N'évalue PAS et ne pénalise JAMAIS les sections d'introduction courtes comme "Profil", "À propos", "Résumé" ou "Profil atypique". Ignore-les totalement pour ce critère).
        - Les mots-clés techniques sont-ils contextuels ou simplement entassés de manière artificielle ?
        - Indique EXPLICITEMENT ce qui ne va pas (ex: "Nom de section 'Mon Parcours' au lieu de 'Expériences'", "Mots-clés empilés sans lien avec les expériences").
        - Fournis des points d'amélioration spécifiques et factuels.
 
-    2. QUANTIFICATION DES RÉSULTATS (25 points) :
+    2. QUANTIFICATION DES RÉSULTATS (100 points) :
        - Les expériences mentionnent-elles des MÉTRIQUES TECHNIQUES SPÉCIFIQUES ?
          Cherche : réduction de latence (ms), amélioration du temps de chargement (%),
          optimisation de requêtes SQL (x fois plus rapide), volume d'utilisateurs supporté,
@@ -280,7 +280,7 @@ cv_quality_task:
        - Donne des suggestions SPÉCIFIQUES de métriques que le candidat pourrait ajouter
          en fonction de ses expériences et projets RÉELS (pas des conseils génériques).
 
-    3. STRUCTURE ET LISIBILITÉ (15 points) :
+    3. STRUCTURE ET LISIBILITÉ (100 points) :
        - ANALYSE CRITIQUE BASÉE SUR LE TEXTE : Ne suppose pas que le CV est beau. Évalue la structure à partir du texte extrait.
        - RÈGLE ABSOLUE SUR LA FORME : N'évalue JAMAIS la présence ou l'absence de listes à puces/tirets. Le parsing supprime souvent la mise en forme, ne fais donc aucune remarque sur des "blocs de texte illisibles".
        - L'ordre chronologique inverse est-il respecté dans les expériences et formations ? Si non, pénalise sévèrement.
@@ -289,12 +289,12 @@ cv_quality_task:
        - STRUCTURATION DES COMPÉTENCES : Les compétences sont-elles regroupées par catégories logiques (Langages, Frameworks, BDD, DevOps/Cloud) ou en liste plate ? Une structuration par catégories est fortement recommandée pour les filtres ATS.
        - Fournis des conseils d'amélioration FACTUELS sur la structure.
 
-    4. PRÉSENTATION DES PROJETS (20 points) :
+    4. PRÉSENTATION DES PROJETS (100 points) :
        - Chaque projet a-t-il un titre, des technos, et des résultats ?
        - Les projets sont-ils pertinents pour le poste visé ?
        - Y a-t-il une variété de projets (pro + perso) ?
 
-    5. PREUVES DE COMPÉTENCES (20 points) :
+    5. PREUVES DE COMPÉTENCES (100 points) :
        - RÈGLE CRITIQUE : Une compétence est considérée "sans preuve" UNIQUEMENT si elle
          apparaît EXCLUSIVEMENT dans la section Compétences sans aucune mention dans
          les expériences OU les projets. Tu dois vérifier par toi-même (par analyse textuelle)
@@ -312,6 +312,9 @@ cv_quality_task:
     - Si SENIOR/STAFF : vérifie la présence de choix architecturaux et compromis
       (systèmes distribués, microservices), leadership technique (mentoring, revues de code),
       gestion de la scalabilité, impact organisationnel au-delà du code.
+
+    SCORE GLOBAL :
+    - il faut appliquer une moyenne des scores des 5 critères.
 
     RED FLAGS À DÉTECTER :
     - DÉTECTION STRICTE DES COMPÉTENCES SANS PREUVE : Tu DOIS t'appuyer uniquement sur ton évaluation de "preuves_competences". S'il y a des compétences listées dans "skills_sans_preuve", ajoute un red flag. Sinon, n'ajoute pas de red flag pour ce sujet.
