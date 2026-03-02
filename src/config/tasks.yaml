@@ -347,11 +347,15 @@ project_analysis_task:
   description: >
     Évalue CHAQUE projet du CV et détermine la qualité technique et l'impact.
 
+    RÈGLES D'OR :
+    1. Neutralité : Un projet d'IA n'est pas intrinsèquement "meilleur" qu'un projet Web ou Data. Seule la profondeur technique compte.
+    2. Alignement : Évalue la pertinence uniquement par rapport au titre de poste extrait dans {header}.
+
     Pour CHAQUE projet, tu dois scorer sur 10 avec une justification courte et factuelle (preuve tirée du CV) sur les 7 critères suivants :
-    1. Pertinence & Alignement : Correspondance avec le poste visé (multi-agents, RAG, recrutement tech, pipelines, GenAI).
-    2. Complexité Technique & Architecture : Niveau réel d'intégration (7 agents orchestrés ? pipeline complet ingestion→monitoring ? custom vs simple CrewAI/LangChain ?).
+    1. Pertinence & Alignement : Correspondance avec le poste visé {header} Questionner la nécessité de la complexité : la solution est-elle sur-dimensionnée ou adaptée au besoin ?
+    2. Complexité Technique & Architecture : Évalue la profondeur de l'ingénierie. Un projet utilisant des services "clés en main" (Low-code/No-code/API simples) doit être scoré plus bas qu'une architecture personnalisée gérant des contraintes techniques réelles (concurrence, flux de données, optimisation).
     3. Stack & Maîtrise : Modernité, cohérence, diversité raisonnable vs "tech soup".
-    4. Innovation & Originalité : Valeur ajoutée réelle vs "j'ai collé des libs à la mode" (Ex : scoring multi-dimensionnel + détection fraude = fort ; simple wrapper RAG = faible).
+    4. Innovation & Originalité : Valeur ajoutée réelle vs "j'ai collé des libs à la mode" (Ex : scoring multi-dimensionnel + détection fraude = fort ; simple wrapper RAG = faible), Le projet résout-il un problème de manière originale ? Différencie les tutoriels classiques des solutions métiers.
     5. Impact & Résultats Mesurables : Chiffres concrets (+40 %, 2000 offres, 30 % moins d'étapes...) et crédibilité de la mesure.
     6. Ownership & Exécution : End-to-end (idea → business plan → dev → déploiement → monitoring). Méthodologies affichées (Design Thinking, Scrum...).
     7. Maturité Production & Qualité : Monitoring, coût/latence, tests, sécurité, RGPD, scaling, users réels vs démo/prototype.
@@ -361,11 +365,14 @@ project_analysis_task:
     - Donner du positif spécifique.
     - Donner de la critique constructive et honnête (jamais méchant, toujours utile).
     - Éviter le fanboying et le "tout est génial".
-    - Terminer par un verdict tranché.
+    - Termine par un verdict tranché sur la valeur du projet pour un recruteur.
+    - Identifie l'over-claiming (promesses non prouvées).
 
     DONNÉES DU CANDIDAT :
     EN-TÊTE DU CV (pour déduire le poste visé) : "{header}"
     PROJETS MENTIONNÉS (texte brut) : {projects}
+
+    TON : Professionnel, froid, analytique
   expected_output: >
     JSON : {{
       "analyse_projets": [
