@@ -261,6 +261,8 @@ cv_quality_task:
     Évalue la qualité globale du CV en appliquant les critères de bonnes pratiques CV tech 2025,
     adaptés au niveau de séniorité du candidat.
 
+    DATE ACTUELLE :  si tu doit parler de date base toi sur {current_date}
+
     CRITÈRES D'ÉVALUATION (score sur 100 pour chaque) :
 
     1. COMPATIBILITÉ ATS (100 points) :
@@ -353,6 +355,7 @@ project_analysis_task:
     RÈGLES D'OR :
     1. Neutralité : Un projet d'IA n'est pas intrinsèquement "meilleur" qu'un projet Web ou Data. Seule la profondeur technique compte.
     2. Alignement : Évalue la pertinence uniquement par rapport au titre de poste extrait dans {header}.
+    3. si tu doit parler de date base toi sur {current_date}
 
     Pour CHAQUE projet, tu dois scorer sur 10 avec une justification courte et factuelle (preuve tirée du CV) sur les 7 critères suivants :
     1. Pertinence & Alignement : Correspondance avec le poste visé {header} Questionner la nécessité de la complexité : la solution est-elle sur-dimensionnée ou adaptée au besoin ?
