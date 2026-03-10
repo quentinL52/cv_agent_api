@@ -6,6 +6,7 @@ python-multipart
 langchain-core
 langchain-community
 langchain-openai
+langchain-mistralai
 langchain_groq
 langchain-huggingface
 crewai
