@@ -262,6 +262,8 @@ cv_quality_task:
     adaptés au niveau de séniorité du candidat.
 
     DATE ACTUELLE :  si tu doit parler de date base toi sur {current_date}
+    n'utilise aucune signes tel que * pour mettre en forme le texte
+    pour les conseils ne les numérote pas.
 
     CRITÈRES D'ÉVALUATION (score sur 100 pour chaque) :
 
@@ -301,10 +303,12 @@ cv_quality_task:
          apparaît EXCLUSIVEMENT dans la section Compétences sans aucune mention dans
          les expériences OU les projets. Tu dois vérifier par toi-même (par analyse textuelle)
          si les compétences listées apparaissent ailleurs. Ne signale que les skills qui n'ont "aucun contexte".
+         ne liste pas toutes les skills contente toi de verifier celle qui ne sont pas démontrées.
        - DÉTECTION DES LIENS : Cherche les URLs dans le CV Markdown ET dans le texte brut.
          Les liens peuvent apparaître sous forme de Markdown [texte](url), de texte brut
          (github.com/..., linkedin.com/...) ou dans le header. Signale les liens PRÉSENTS,
          ne jamais conclure à l'absence de liens sans avoir vérifié les deux sources de texte.
+         ne liste pas les liens verifie juste qu'il sont cohérents et qu'ils sont bien référencés.
        - Pour les RECONVERSIONS : les compétences transférables (management, optimisation,
          communication, gestion budgétaire) sont-elles mises en valeur et reliées au nouveau domaine ?
 
@@ -314,6 +318,7 @@ cv_quality_task:
     - Si SENIOR/STAFF : vérifie la présence de choix architecturaux et compromis
       (systèmes distribués, microservices), leadership technique (mentoring, revues de code),
       gestion de la scalabilité, impact organisationnel au-delà du code.
+    - Si RECONVERSION : vérifie la cohérence des compétences transférables avec le nouveau domaine, et base l'analyse sur l'experience recente du candidat et non son experience precedente.
 
     SCORE GLOBAL :
     - il faut appliquer une moyenne des scores des 5 critères.
