@@ -258,7 +258,7 @@ metier_matching_task:
 
 cv_quality_task:
   description: >
-    Évalue la qualité globale du CV en appliquant les critères de bonnes pratiques CV tech 2025,
+    Évalue la qualité globale du CV en appliquant les critères de bonnes pratiques CV tech,
     adaptés au niveau de séniorité du candidat.
 
     DATE ACTUELLE :  si tu doit parler de date base toi sur {current_date}
@@ -326,14 +326,11 @@ cv_quality_task:
     - Section compétences en liste plate non catégorisée
 
     DONNÉES À ÉVALUER :
+    DATE ACTUELLE : {current_date}
     EN-TÊTE DU CV (pour le poste visé et niveau de séniorité) : "{header}"
     NOMBRE DE PAGES : {page_count}
     CV COMPLET (texte Markdown) : "{cv_full_text}"
     TEXTE BRUT DU CV (première page, pour détecter les URLs et liens) : "{cv_raw_start}"
-    SECTION COMPÉTENCES : "{skills}"
-    SECTION EXPÉRIENCES : "{experiences}"
-    SECTION PROJETS : "{projects}"
-    SECTION FORMATIONS : "{education}"
   expected_output: >
     JSON : {{
       "score_global": 72,
@@ -399,6 +396,7 @@ project_analysis_task:
           "note_globale": 67,
           "verdict_recruteur": "Très bon projet qui démontre une vraie maîtrise agentique... Idéal pour un rôle IA intermédiaire, à creuser en entretien."
         }}
-      ]
+      ],
+      "analyse_projets_coherence": {{ "score": 8, "details": "..." }}
     }}
 

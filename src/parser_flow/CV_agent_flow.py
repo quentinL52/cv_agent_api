@@ -76,7 +76,7 @@ class CVAgentOrchestrator:
         self.project_analyzer = make_agent("project_analyzer", llm_override=self.big_llm)
 
     # ──────────────────────────────────────────────
-    # PHASE 1 : Découpage du CV en sections
+    #          Découpage du CV en sections
     # ──────────────────────────────────────────────
 
     async def split_cv_sections(self, cv_content: str, cv_raw_start: str = "") -> Dict[str, str]:
@@ -102,7 +102,7 @@ class CVAgentOrchestrator:
         return parsed
 
     # ──────────────────────────────────────────────
-    # PHASE 2 : Extraction et Analyse Parallèles
+    #        Extraction et Analyse Parallèles
     # ──────────────────────────────────────────────
 
     async def run_all_agents(
@@ -161,14 +161,11 @@ class CVAgentOrchestrator:
             ("identity_task", self.identity_extractor, {"header": raw_header, "cv_raw_start": cv_raw_start[:1500], "file_name": file_name}),
             ("poste_visé_task", self.header_analyzer, {"header": safe_header, "cv_raw_start": safe_cv_raw}),
             ("cv_quality_task", self.cv_quality_checker, {
+                "current_date": datetime.now().strftime("%Y-%m-%d"),
                 "header": safe_header,
                 "page_count": page_count,
-                "cv_full_text": cv_full_text[:6000],
+                "cv_full_text": cv_full_text[:8000],
                 "cv_raw_start": safe_cv_raw,
-                "skills": raw_skills[:2000],
-                "experiences": raw_experiences[:3000],
-                "projects": raw_projects[:2000],
-                "education": raw_education[:2000],
             }),
             ("metier_matching_task", self.metier_matcher, {
                 "header": safe_header,
@@ -206,7 +203,6 @@ class CVAgentOrchestrator:
                 return default
             return self._parse_json_output(results_map[key], default)
 
-        # Extraction
         competences = get_parsed("skills_task", {"hard_skills": [], "soft_skills": []})
         experiences = get_parsed("experience_task", [])
         projets = get_parsed("project_task", {"professional": [], "personal": []})
@@ -215,8 +211,8 @@ class CVAgentOrchestrator:
         etudiant_data = get_parsed("etudiant_task", {}).get("etudiant_analysis", {})
         
         latest_end_date = etudiant_data.get("latest_education_end_date")
-        if latest_end_date:
-            etudiant_data["is_etudiant"] = self._is_ongoing_date(latest_end_date)
+        # NOTE: is_etudiant est déjà calculé par l'agent etudiant_detector via son prompt
+        # On évite de l'écraser ici avec _is_ongoing_date qui peut être moins précis que l'IA
 
         is_en_poste = False
         if isinstance(experiences, list):
@@ -230,7 +226,6 @@ class CVAgentOrchestrator:
         langues_raw = get_parsed("language_task", {})
         identity = get_parsed("identity_task", {})
 
-        # Nettoyage des doublons dans hard_skills (case-insensitive)
         if isinstance(competences, dict):
             raw_skills = competences.get("hard_skills", [])
             seen = set()
@@ -254,7 +249,6 @@ class CVAgentOrchestrator:
             "is_en_poste": is_en_poste,
         }
 
-        # Analyse
         header_data = get_parsed("poste_visé_task", {"poste_vise": "Non identifié", "confiance": 0})
         metier_data = get_parsed("metier_matching_task", {"postes_recommandes": []})
         quality_data = get_parsed("cv_quality_task", {"score_global": 0, "red_flags": [], "conseils_prioritaires": []})
@@ -264,7 +258,6 @@ class CVAgentOrchestrator:
         if isinstance(quality_data, dict):
             conseils.extend(quality_data.get("conseils_prioritaires", []))
 
-        # Filtre de sécurité : ne garder dans l'analyse de projets que ceux issus de l'extraction
         extracted_titles: set[str] = set()
         for p in (projets.get("professional", []) if isinstance(projets, dict) else []):
             if isinstance(p, dict) and p.get("title"):
@@ -287,7 +280,7 @@ class CVAgentOrchestrator:
             "analyse_poste_vise": metier_data.get("analyse_poste_vise", "") if isinstance(metier_data, dict) else "",
             "qualite_cv": quality_data,
             "analyse_projets": analyse_projets,
-            "coherence_globale_projets": project_data.get("coherence_globale", {}) if isinstance(project_data, dict) else {},
+            "coherence_globale_projets": project_data.get("analyse_projets_coherence", {}) if isinstance(project_data, dict) else {},
             "conseils_amelioration": conseils,
         }
 
@@ -332,7 +325,7 @@ class CVAgentOrchestrator:
 
 
     # ──────────────────────────────────────────────
-    # Utilitaires
+    #                  Utilitaires
     # ──────────────────────────────────────────────
 
     def _is_ongoing_date(self, date_str: str) -> bool:

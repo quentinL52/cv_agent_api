@@ -8,7 +8,7 @@
       },
       {
         "langue": "Anglais",
-        "niveau": "Courant (C1)"
+        "niveau": "C1"
       },
       {
         "langue": "Portugais",
@@ -19,21 +19,24 @@
       "hard_skills": [
         "Python",
         "SQL",
-        "Excel",
+        "JavaScript",
         "React.js",
         "FastAPI",
         "LangChain",
         "LangGraph",
+        "Langfuse",
+        "CrewAI",
         "Scikit-learn",
         "RAG",
-        "Pandas",
-        "PySpark",
-        "DBT",
-        "Dataiku",
+        "Context Engineering",
         "PostgreSQL",
         "MongoDB",
         "MinIO",
         "Pinecone",
+        "Pandas",
+        "PySpark",
+        "DBT",
+        "Dataiku",
         "Metabase",
         "PowerBI",
         "Mage.ai",
@@ -41,78 +44,86 @@
         "Docker",
         "Git",
         "CI/CD",
-        "Selenium",
-        "BeautifulSoup4",
         "N8n",
         "Langflow",
-        "Gumloop"
+        "Gumloop",
+        "Selenium",
+        "BeautifulSoup4",
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "API Gemini",
+        "Scrum",
+        "Design Thinking",
+        "RGPD",
+        "RGAA"
       ],
       "soft_skills": [
         "Leadership",
         "Communication",
         "Adaptation",
-        "Rigueur"
+        "Gestion d'équipe",
+        "Planification",
+        "Relation client",
+        "Analyse",
+        "Gestion budgétaire"
       ],
       "skills_with_context": [
         {
           "skill": "Python",
-          "context": "projet, académique"
+          "context": "projet, expérience, académique"
         },
         {
           "skill": "SQL",
-          "context": "académique"
+          "context": "projet, expérience, académique"
         },
         {
-          "skill": "Excel",
-          "context": "sans contexte"
+          "skill": "JavaScript",
+          "context": "projet, académique"
         },
         {
           "skill": "React.js",
-          "context": "projet"
+          "context": "projet, académique"
         },
         {
           "skill": "FastAPI",
-          "context": "projet"
+          "context": "projet, académique"
         },
         {
           "skill": "LangChain",
-          "context": "projet"
+          "context": "projet, académique"
         },
         {
           "skill": "LangGraph",
-          "context": "projet"
+          "context": "projet, académique"
+        },
+        {
+          "skill": "Langfuse",
+          "context": "sans contexte"
+        },
+        {
+          "skill": "CrewAI",
+          "context": "projet, académique"
         },
         {
           "skill": "Scikit-learn",
-          "context": "académique"
+          "context": "projet, académique"
         },
         {
           "skill": "RAG",
           "context": "expérience, projet"
         },
         {
-          "skill": "Pandas",
-          "context": "académique"
-        },
-        {
-          "skill": "PySpark",
-          "context": "certification"
-        },
-        {
-          "skill": "DBT",
-          "context": "certification"
-        },
-        {
-          "skill": "Dataiku",
-          "context": "expérience"
+          "skill": "Context Engineering",
+          "context": "sans contexte"
         },
         {
           "skill": "PostgreSQL",
-          "context": "projet"
+          "context": "projet, académique"
         },
         {
           "skill": "MongoDB",
-          "context": "projet"
+          "context": "projet, académique"
         },
         {
           "skill": "MinIO",
@@ -123,12 +134,28 @@
           "context": "projet"
         },
         {
+          "skill": "Pandas",
+          "context": "projet, académique"
+        },
+        {
+          "skill": "PySpark",
+          "context": "académique"
+        },
+        {
+          "skill": "DBT",
+          "context": "académique"
+        },
+        {
+          "skill": "Dataiku",
+          "context": "expérience, académique"
+        },
+        {
           "skill": "Metabase",
           "context": "projet"
         },
         {
           "skill": "PowerBI",
-          "context": "expérience, académique"
+          "context": "expérience, projet, académique"
         },
         {
           "skill": "Mage.ai",
@@ -151,14 +178,6 @@
           "context": "sans contexte"
         },
         {
-          "skill": "Selenium",
-          "context": "projet"
-        },
-        {
-          "skill": "BeautifulSoup4",
-          "context": "sans contexte"
-        },
-        {
           "skill": "N8n",
           "context": "sans contexte"
         },
@@ -169,6 +188,78 @@
         {
           "skill": "Gumloop",
           "context": "sans contexte"
+        },
+        {
+          "skill": "Selenium",
+          "context": "projet"
+        },
+        {
+          "skill": "BeautifulSoup4",
+          "context": "sans contexte"
+        },
+        {
+          "skill": "Next.js",
+          "context": "projet"
+        },
+        {
+          "skill": "TypeScript",
+          "context": "projet"
+        },
+        {
+          "skill": "Tailwind",
+          "context": "projet"
+        },
+        {
+          "skill": "API Gemini",
+          "context": "projet"
+        },
+        {
+          "skill": "Scrum",
+          "context": "expérience, projet, académique"
+        },
+        {
+          "skill": "Design Thinking",
+          "context": "projet, académique"
+        },
+        {
+          "skill": "RGPD",
+          "context": "expérience, académique"
+        },
+        {
+          "skill": "RGAA",
+          "context": "expérience, académique"
+        },
+        {
+          "skill": "Leadership",
+          "context": "expérience"
+        },
+        {
+          "skill": "Communication",
+          "context": "expérience"
+        },
+        {
+          "skill": "Adaptation",
+          "context": "expérience"
+        },
+        {
+          "skill": "Gestion d'équipe",
+          "context": "expérience"
+        },
+        {
+          "skill": "Planification",
+          "context": "expérience"
+        },
+        {
+          "skill": "Relation client",
+          "context": "expérience"
+        },
+        {
+          "skill": "Analyse",
+          "context": "expérience"
+        },
+        {
+          "skill": "Gestion budgétaire",
+          "context": "expérience"
         }
       ]
     },
@@ -201,12 +292,11 @@
     ],
     "reconversion": {
       "is_reconversion": true,
-      "context": "Le candidat a effectué une reconversion professionnelle en passant du domaine de la pâtisserie, où il a travaillé comme Manager & Responsable Production pendant 14 ans, à un domaine technologique en tant que Data Analyste et Chef de Projet IA. Il a suivi une formation en Data Analyst de février 2024 à juillet 2024, puis a poursuivi avec une formation Chef de Projet IA de novembre 2024 à décembre 2025.",
+      "context": "Le candidat est passé d'un domaine de la pâtisserie et de la gestion de production à un domaine lié à la data et à l'intelligence artificielle. Il a commencé par une formation de Data Analyst en février 2024, suivie d'une formation de Chef de Projet IA en novembre 2024, et a ensuite commencé une alternance en tant que Data Analyste / Chef de Projet IA en décembre 2024.",
       "date_reconversion": "2024-02"
     },
     "projets": {
-      "professional": [],
-      "personal": [
+      "professional": [
         {
           "title": "AIRH - Plateforme SaaS de recrutement augmenté (système multi-agents)",
           "technologies": [
@@ -221,26 +311,13 @@
             "Mage.ai"
           ],
           "outcomes": [
-            "Architecture d'un système multi-agents orchestrant l'analyse automatisée de CV et la simulation d'entretien dynamique",
-            "Moteur de scoring multi-dimensionnel avec détection de fraude automatisée",
-            "Pipeline de données complet orchestré avec Mage.ai",
-            "Pilotage de A à Z : Design Thinking, business plan, développement full-stack, déploiement"
+            "Architecture d'un système multi-agents (7 agents) orchestrant l'analyse automatisée de CV et la simulation d'entretien dynamique",
+            "Moteur de scoring multi-dimensionnel (technique 40%, comportemental 30%, situationnel 20%, soft skills 10%) avec détection de fraude automatisée",
+            "Pipeline de données complet : ingestion, parsing, stockage objet (MinIO), base relationnelle + NoSQL, monitoring qualité (Metabase), orchestré avec Mage.ai",
+            "Pilotage de A a Z : Design Thinking, business plan, développement full-stack, déploiement",
+            "Mémoire de fin d’études (Bac+5) : conception d'un système de recrutement augmenté"
           ],
           "domaine metier": "recrutement/RH"
-        },
-        {
-          "title": "FounderOS - Dashboard tout-en-un pour fondateurs de startups",
-          "technologies": [
-            "Next.js",
-            "TypeScript",
-            "Tailwind",
-            "API Gemini"
-          ],
-          "outcomes": [
-            "Outil complet : Lean Canvas, CRM Lite, veille stratégique, gestion financière, pipeline de contenu",
-            "Module d'intelligence concurrentielle avec scoring automatisé"
-          ],
-          "domaine metier": "entrepreneuriat/startups"
         },
         {
           "title": "Data Jobs - Moteur de recommandation d'emploi RAG",
@@ -252,11 +329,27 @@
             "API Groq"
           ],
           "outcomes": [
-            "Scraping et vectorisation de +2 000 offres d'emploi tech",
-            "Pertinence des recommandations améliorée de +40% via Prompt Engineering iteratif",
+            "Scraping et vectorisation de +2 000 offres d'emploi tech dans un vector store Pinecone",
+            "Pertinence des recommandations améliorée de +40% via Prompt Engineering iteratif (LangChain + Groq)",
             "Pilotage des sprints en tant que Scrum Master"
           ],
           "domaine metier": "recrutement/RH"
+        }
+      ],
+      "personal": [
+        {
+          "title": "FounderOS - Dashboard tout-en-un pour fondateurs de startups",
+          "technologies": [
+            "Next.js",
+            "TypeScript",
+            "Tailwind",
+            "API Gemini"
+          ],
+          "outcomes": [
+            "Outil complet : Lean Canvas, CRM Lite, veille stratégique, gestion financière, pipeline de contenu",
+            "Module d'intelligence concurrentielle avec scoring automatisé (Health Score, Radar 6 axes, analyse SWOT intelligente)"
+          ],
+          "domaine metier": "startups/entrepreneuriat"
         }
       ]
     },
@@ -275,7 +368,7 @@
       }
     ],
     "etudiant": {
-      "is_etudiant": false,
+      "is_etudiant": true,
       "niveau_etudes": "bac+5",
       "specialite": "Chef de Projet IA",
       "latest_education_end_date": "2025-12-31"
@@ -284,7 +377,7 @@
   },
   "recommandations": {
     "header_analysis": {
-      "poste_vise": "Chef de Projet Data / IA - Spécialiste Systèmes Multi-Agents & Recrutement Tech",
+      "poste_vise": "Chef de Projet Data / IA  - Spécialiste Systèmes Multi-Agents & Recrutement Tech",
       "confiance": 90
     },
     "postes_recommandes": [
@@ -292,290 +385,267 @@
         "metier_id": "data_analyst",
         "nom": "Data Analyst",
         "categorie": "Noyau data & analytique",
-        "score_matching": 88,
+        "score_matching": 85,
         "detail_scores": {
-          "competences_techniques": 85,
+          "competences_techniques": 80,
           "outils_technologies": 90,
           "experiences_projets": 85,
-          "methodologies": 80
+          "methodologies": 75
         },
         "competences_matchees": [
-          "SQL",
-          "Python",
+          "SQL (PostgreSQL, MySQL, CTE)",
+          "Python (pandas)",
           "Power BI",
-          "Metabase"
+          "Excel/Google Sheets (formules avancées, tableaux croisés dynamiques)",
+          "Visualisation de données",
+          "Manipulation et préparation de données",
+          "Notions de statistiques descriptives",
+          "Bonnes pratiques de requêtage",
+          "Notions d’automatisation des rapports",
+          "Capacité à interpréter les résultats d’AB testing",
+          "Scrum/Agile",
+          "Design Thinking"
         ],
         "competences_manquantes": [
           "Looker",
-          "Qlik"
+          "dbt",
+          "R (dplyr, ggplot2)",
+          "Outils de data warehouse (BigQuery, Snowflake, Redshift en consommation)",
+          "Outils de collaboration (Confluence, Notion, Jira)",
+          "Git en lecture / basique pour récupérer des scripts ou requêtes partagées"
         ],
-        "justification": "Le profil couvre 88% des compétences requises grâce à une solide maîtrise de SQL et Python, ainsi qu'une expérience significative avec Power BI et Metabase. Les méthodologies Agile et Scrum sont bien intégrées, ce qui est crucial pour ce rôle."
+        "justification": "Le profil couvre 85% des compétences requises pour le poste de Data Analyst. Les compétences techniques en SQL, Python, et Power BI sont bien maîtrisées, et les expériences récentes en développement de tableaux de bord PowerBI et en optimisation de flows Dataiku sont particulièrement pertinentes. Les méthodologies Agile/Scrum et Design Thinking sont également un atout. Cependant, des lacunes existent dans la maîtrise de certains outils comme Looker et dbt, ainsi que dans les outils de collaboration et les data warehouses."
       },
       {
         "metier_id": "data_engineer",
         "nom": "Data Engineer",
         "categorie": "Ingénierie data & IA",
-        "score_matching": 82,
+        "score_matching": 75,
         "detail_scores": {
-          "competences_techniques": 80,
-          "outils_technologies": 85,
-          "experiences_projets": 80,
-          "methodologies": 75
+          "competences_techniques": 70,
+          "outils_technologies": 80,
+          "experiences_projets": 75,
+          "methodologies": 70
         },
         "competences_matchees": [
-          "Python",
-          "SQL",
-          "PySpark",
-          "DBT",
-          "AWS",
-          "Docker"
+          "SQL avancé (requêtes complexes, tuning, indexation, partitionnement)",
+          "Python pour data engineering (scripts, packages, tests, typage, logging)",
+          "Modern data stack : dbt (data modeling & transformations)",
+          "Orchestration (Airflow, Dagster, Prefect)",
+          "Streaming & messaging : Apache Kafka, Confluent, AWS Kinesis, GCP Pub/Sub",
+          "Traitement distribué : Apache Spark (batch & streaming)",
+          "Cloud data warehouses : Snowflake, BigQuery, Redshift, Synapse",
+          "Stockage data lake : S3, GCS, ADLS ; formats Parquet, ORC, Delta Lake, Apache Iceberg",
+          "CI/CD & DevOps : Git, pipelines CI, conteneurisation (Docker), infrastructure as code (Terraform, CloudFormation, Pulumi)",
+          "Concepts d’architecture data (lambda, kappa, lakehouse, microservices data)",
+          "Notions de sécurité : IAM, chiffrement au repos/en transit, gestion des secrets, data masking",
+          "Tests de données : tests unitaires, de contrats et de qualité (schémas, contraintes, anomalies)",
+          "Scrum/Agile",
+          "Design Thinking"
         ],
         "competences_manquantes": [
-          "Apache Kafka",
-          "Flink"
+          "Flink ou Beam",
+          "Terraform, CloudFormation, Pulumi",
+          "Prometheus, Grafana, services de monitoring cloud natif",
+          "Great Expectations, Soda Core, OpenMetadata, Amundsen"
         ],
-        "justification": "Le candidat possède une bonne maîtrise des outils de transformation et de cloud, ainsi qu'une expérience en DevOps, ce qui est essentiel pour un Data Engineer. Cependant, l'expérience avec des outils de streaming comme Kafka est limitée."
+        "justification": "Le profil couvre 75% des compétences requises pour le poste de Data Engineer. Les compétences techniques en SQL, Python, et les outils comme dbt, Airflow, et Spark sont bien maîtrisées. Les expériences récentes en optimisation de flows Dataiku et en développement de pipelines de données sont particulièrement pertinentes. Les méthodologies Agile/Scrum et Design Thinking sont également un atout. Cependant, des lacunes existent dans la maîtrise de certains outils comme Flink ou Beam, Terraform, CloudFormation, Pulumi, et les outils de monitoring."
       },
       {
         "metier_id": "data_scientist",
         "nom": "Data Scientist",
         "categorie": "Noyau data & analytique",
-        "score_matching": 80,
+        "score_matching": 70,
         "detail_scores": {
-          "competences_techniques": 75,
-          "outils_technologies": 80,
-          "experiences_projets": 85,
-          "methodologies": 70
+          "competences_techniques": 65,
+          "outils_technologies": 75,
+          "experiences_projets": 70,
+          "methodologies": 65
         },
         "competences_matchees": [
-          "Python",
-          "Scikit-learn",
-          "LangChain",
-          "RAG"
+          "Python avancé (pandas, numpy, scipy, scikit-learn, statsmodels)",
+          "Programmation orientée objet, bonnes pratiques (tests unitaires, packaging, logging, CI)",
+          "Statistiques avancées (tests d’hypothèses, échantillonnage, bootstrap, méthodes bayésiennes de base)",
+          "Machine learning supervisé et non supervisé (régression, arbres, gradient boosting, SVM, clustering, réduction de dimension)",
+          "Deep learning (CNN, RNN, transformers) pour texte, image et séries temporelles",
+          "Traitement de données à grande échelle avec Spark / PySpark ou Dask",
+          "Feature engineering, sélection de variables, encoding, normalisation, gestion des valeurs manquantes",
+          "Évaluation de modèles (cross-validation, métriques de classification et régression, AUC, F1, courbes PR, calibration)",
+          "Concepts de MLOps de base (suivi d’expériences, versioning de modèles et de données, reproductibilité)",
+          "Cloud data & AI (AWS, GCP ou Azure) pour entraînement et déploiement",
+          "Bon niveau SQL (jointures complexes, CTE, window functions, optimisation)",
+          "Connaissances de base en LLMs et GenAI (APIs, RAG simple, prompt engineering de base)",
+          "Scrum/Agile",
+          "Design Thinking"
         ],
         "competences_manquantes": [
-          "Deep learning",
-          "Spark"
+          "TensorFlow, Keras, PyTorch, Hugging Face Transformers",
+          "MLflow, Weights & Biases, DVC",
+          "JupyterLab, VS Code, Databricks, Vertex AI Workbench, SageMaker Studio",
+          "PostgreSQL, MySQL, BigQuery, Snowflake, MongoDB",
+          "Git, GitHub/GitLab, GitHub Actions / GitLab CI"
         ],
-        "justification": "Le profil est bien aligné avec les compétences en machine learning et en IA, notamment avec l'utilisation de LangChain et Scikit-learn. Cependant, une expérience plus approfondie en deep learning et Spark serait bénéfique."
+        "justification": "Le profil couvre 70% des compétences requises pour le poste de Data Scientist. Les compétences techniques en Python, SQL, et les outils comme scikit-learn, Spark, et les concepts de MLOps sont bien maîtrisés. Les expériences récentes en développement de solutions RAG et en optimisation de flows Dataiku sont particulièrement pertinentes. Les méthodologies Agile/Scrum et Design Thinking sont également un atout. Cependant, des lacunes existent dans la maîtrise de certains outils comme TensorFlow, Keras, PyTorch, Hugging Face Transformers, MLflow, Weights & Biases, DVC, et les outils de collaboration."
       }
     ],
-    "analyse_poste_vise": "Le poste de Data Analyst est bien aligné avec le profil du candidat, qui possède une forte expérience en SQL, Python, et Power BI, ainsi qu'une bonne compréhension des méthodologies Agile et Scrum. Les compétences manquantes comme Looker et Qlik peuvent être acquises rapidement grâce à l'expérience existante avec d'autres outils BI.",
-    "qualite_cv": {
-      "score_global": 76,
-      "compatibilite_ats": {
-        "score": 83,
-        "details": "Sections principales standard et bien nommées : « EXPERIENCE PROFESSIONNELLE », « PROJETS CLES », « FORMATION », « STACK TECHNIQUE », « LANGUES ». Bon point ATS. Les mots-clés techniques sont majoritairement contextualisés via les projets (AIRH/FounderOS/Data Jobs) et l’alternance (PowerBI, Dataiku, RAG). Points perfectibles : 1) « STACK TECHNIQUE » est OK mais certains ATS attendent « COMPETENCES » (mineur). 2) Présence de sous-intitulés atypiques « de base », « Transformation », « BI » qui peuvent être moins bien parsés selon ATS (mieux en listes/catégories simples). 3) Des outils très nombreux (Langflow, Gumloop, N8n, Langfuse…) peuvent être perçus comme empilement si non reliés à une expérience/projet précis (à relier explicitement). 4) Les liens sont présents mais libellés (LinkedIn / AIRH / FounderOS) sans URL en clair dans le texte brut : certains ATS ne cliquent pas/extraient mal les ancres (préférer afficher l’URL en toutes lettres)."
-      },
-      "quantification_resultats": {
-        "score": 62,
-        "details": "Bon niveau pour un profil en reconversion/early-confirmé Data : plusieurs chiffres concrets existent (5 dashboards, 150 collaborateurs, 40 documents, 10 flows Dataiku, -30% d’étapes, 6 projets, +2000 offres, +40% pertinence, 7 agents, équipe jusqu’à 8, -20% pertes matière). En revanche, il manque des métriques techniques ‘2025’ attendues côté Data/IA/Produit : latence/temps de réponse, volumétrie (Go, lignes, requêtes/jour), coûts, performance des pipelines, qualité modèle (précision, recall), temps de déploiement, monitoring, couverture de tests, SLA. Sur Enedis et AIRH, les résultats restent partiellement orientés ‘activité’ plutôt que ‘impact’ (gain de temps, adoption, fiabilité, incidents évités).",
-        "metriques_suggerees": [
-          "Enedis/PowerBI : temps moyen de chargement des dashboards (ex. -40% vs avant), nombre de vues mensuelles, taux d’adoption (% des 150 utilisateurs actifs), réduction du temps de production de reporting (heures/sem).",
-          "Enedis/RAG : taux de réponses utiles (ex. % évalué), précision@k / recall@k, taux d’hallucination, temps moyen de réponse (ms/s), coût par requête (€, tokens), nombre de requêtes/semaine en test.",
-          "Enedis/Dataiku : volume de données traité par flow (Go/jour, nb de tables), durée d’exécution avant/après (ex. 45 min → 28 min), taux d’échec des jobs (incidents/mois), dette technique réduite (nb de recettes/variables standardisées).",
-          "AIRH : temps de parsing CV (ms), throughput (CV/min), coût d’inférence par entretien simulé, latence end-to-end multi-agents, taux de succès des runs (sans erreurs), nombre de candidats/recruteurs beta testeurs.",
-          "AIRH : métriques qualité scoring (corrélation avec décisions humaines, calibration, taux de faux positifs ‘fraude’), couverture de tests backend (%), temps de déploiement (CI/CD) et fréquence de release.",
-          "Data Jobs : NDCG@k / MRR (si déjà mesuré), taux de clic ou satisfaction utilisateur, temps de vectorisation (2k offres en X min), coût Pinecone (€/mois) et optimisation (index, dimension, batch).",
-          "FounderOS : performances web (LCP, TTFB), taille bundle, temps de build/deploy, nombre d’utilisateurs actifs, réduction du churn ou du temps de préparation (Lean Canvas, veille) via l’outil."
-        ]
-      },
-      "structure_lisibilite": {
-        "score": 78,
-        "details": "CV 1 page : conforme et très bon pour un profil en montée en compétence Data. Poste visé clairement indiqué dès l’en-tête (« Chef de Projet Data / IA ») : bon signal. Chronologie : expériences en ordre globalement inverse côté Data (2024-2025 puis 2009-2023) OK ; formations listées 2024-2025 puis 2024 OK. Point à améliorer : la section « LIENS » et « STACK TECHNIQUE » apparaissent aussi dans le texte brut au milieu des expériences (probable effet de mise en page/colonnes) : risque réel de parsing ATS et de lecture recruteur (les liens/skills semblent ‘couper’ l’expérience). Il faut sécuriser une structure linéaire : En-tête > Compétences > Expériences > Projets > Formation (ou Projets avant Expériences si objectif produit).",
-        "structuration_competences": "Compétences bien catégorisées (Langages/Frameworks, IA/ML, Analytics & Data Engineering, DevOps & Automatisation, Méthodologies). Recommandation : renommer « STACK TECHNIQUE » en « COMPETENCES TECHNIQUES » et éviter des micro-sous-blocs (« de base ») au profit de catégories ATS plus standards."
-      },
-      "presentation_projets": {
-        "score": 81,
-        "details": "Projets bien présentés : chaque projet a un nom, une stack, et des éléments concrets (AIRH : 7 agents, pipeline complet, scoring pondéré ; Data Jobs : +2000 offres, +40% pertinence ; FounderOS : modules identifiés). Très pertinent pour le poste visé (Data/IA + produit). À renforcer : ajouter systématiquement 1) le rôle exact (solo vs équipe), 2) l’état (MVP en prod ? beta ? utilisateurs ?), 3) des métriques d’exploitation (latence, coût, usage), 4) un lien direct par projet vers repo/démo (URL en clair) pour preuve immédiate. Sur AIRH, détailler les choix d’architecture (monolithe vs microservices, orchestrateur, storage, stratégie d’indexation vecteur, observabilité) et les compromis."
-      },
-      "preuves_competences": {
-        "score": 74,
-        "details": "Bon niveau de ‘preuves’ car beaucoup de compétences sont démontrées dans expériences/projets : PowerBI et Dataiku (Enedis), RAG/LangChain/Pinecone/Selenium (Data Jobs), React/FastAPI/PostgreSQL/MongoDB/MinIO/Metabase/Mage.ai (AIRH), Next.js/TypeScript/Tailwind/Gemini (FounderOS), Scrum Master mentionné (Data Jobs), management (pâtissier manager) utile pour Chef de Projet. Points faibles : plusieurs outils listés en compétences ne sont pas explicitement rattachés à un projet/expérience (risque de “skills shelf”). Aussi, AWS/Docker/Git/CI/CD sont cités mais sans exemple concret de pipeline, déploiement, registry, infra as code, etc.",
-        "skills_sans_preuve": [
-          "PySpark",
-          "DBT",
-          "AWS",
-          "Docker",
-          "CI/CD",
-          "BeautifulSoup4 (BS4)",
-          "N8n",
-          "Langflow",
-          "Gumloop",
-          "Langfuse",
-          "Design Thinking (usage mentionné mais sans livrables/atelier concret hors AIRH)",
-          "RGAA (mention conformité mais pas d’action vérifiable : audit, critères appliqués, corrections)"
-        ],
-        "liens_detectes": [
-          "https://www.linkedin.com/in/loumeau-quentin/",
-          "https://www.airh.online/",
-          "https://founderdashboard.vercel.app/"
-        ]
-      },
-      "red_flags": [
-        "Compétences listées sans preuve explicite dans expériences/projets : PySpark, DBT, AWS, Docker, CI/CD, BS4, N8n, Langflow, Gumloop, Langfuse, RGAA (à contextualiser ou retirer).",
-        "Risque de parsing/lecture : dans le texte brut, les sections LIENS/STACK TECHNIQUE semblent interrompre la section EXPÉRIENCE (probable mise en page en colonnes)."
-      ],
-      "points_forts": [
-        "Positionnement clair et différenciant (Chef de Projet Data/IA + multi-agents + recrutement tech).",
-        "Projets très pertinents et actuels (RAG, multi-agents, vector DB, scraping, full-stack).",
-        "Déjà plusieurs quantifications utiles (utilisateurs, volumes, gains, nombre de flows, +40% pertinence).",
-        "Valorisation cohérente de la reconversion avec compétences transférables (management, optimisation, international, animation d’ateliers).",
-        "Liens vers LinkedIn et projets live présents (preuve produit)."
-      ],
-      "conseils_prioritaires": [
-        "Sécuriser la lisibilité ATS : sortir d’une mise en page en colonnes et garantir un flux linéaire (les sections LIENS/COMPÉTENCES ne doivent pas apparaître au milieu de l’EXPERIENCE dans l’extraction texte). Si vous gardez les ancres, ajoutez aussi les URL en clair (ex. linkedin.com/in/… ; airh.online ; founderdashboard.vercel.app).",
-        "Ajouter 6–10 métriques techniques ‘signature’ sur Enedis + AIRH : temps d’exécution avant/après des flows Dataiku, volume de données, temps de réponse RAG, coût par requête, adoption (utilisateurs actifs), fiabilité (taux d’échec), et côté AIRH latence multi-agents + coût inference + taux de succès des runs.",
-        "Nettoyer la section compétences : soit retirer les outils non prouvés, soit ajouter une ligne de preuve par outil (ex. ‘DBT : modèle X, 12 tests, docs’, ‘Docker : image FastAPI, docker-compose’, ‘CI/CD : GitHub Actions avec lint+tests+deploy’). Objectif : zéro skill “hors contexte”.",
-        "Sur AIRH, expliciter 3–5 décisions d’architecture et leurs compromis (ex. choix Postgres vs Mongo, stockage MinIO, orchestration Mage.ai, stratégie d’indexation/search, observabilité/trace Langfuse) + ce que vous feriez différemment à l’échelle (10k CV/jour, multi-tenant, files/queues)."
-      ],
-      "adaptation_seniorite": "Profil ‘reconversion vers Data/IA’ avec expérience pro longue mais expérience tech récente (alternance 2024–2025 + projets). Attentes calibrées : comme un junior/confirmé côté Data/IA, les projets sont un atout majeur et sont bien exploités. Pour viser ‘Chef de Projet Data/IA’ (confirmé), il manque encore des marqueurs d’impact mesurable (SLA, gains de temps/coûts, adoption, qualité IA) et des preuves de delivery (déploiement, run, monitoring, CI/CD). La partie compétences transférables (management, optimisation, animation) est bien présente ; elle gagnerait à être reliée à des livrables tech/projet (roadmap, RACI, KPI, gestion des risques, conduite du changement sur les 150 utilisateurs)."
-    },
+    "analyse_poste_vise": "Le poste visé par Quentin Loumeau, Chef de Projet Data / IA, est bien adapté à son profil. Ses compétences techniques en Python, SQL, et les outils comme Power BI, dbt, et Spark sont bien alignées avec les exigences des postes de Data Analyst, Data Engineer, et Data Scientist. Ses expériences récentes en développement de tableaux de bord PowerBI, en optimisation de flows Dataiku, et en développement de solutions RAG sont particulièrement pertinentes. Les méthodologies Agile/Scrum et Design Thinking qu'il maîtrise sont également un atout majeur. Cependant, pour postuler à des postes plus spécialisés comme Data Engineer ou Data Scientist, il devrait renforcer ses compétences dans des outils spécifiques comme Flink ou Beam, Terraform, CloudFormation, Pulumi, et les outils de monitoring. Globalement, son profil est très bien adapté pour un poste de Data Analyst, avec un potentiel pour évoluer vers des rôles plus techniques comme Data Engineer ou Data Scientist avec une formation complémentaire.",
+    "qualite_cv": [
+      "N8n",
+      "Gumloop",
+      "Langflow",
+      "BeautifulSoup4",
+      "Scikit-learn",
+      "DBT",
+      "PySpark"
+    ],
     "analyse_projets": [
       {
         "titre": "AIRH - Plateforme SaaS de recrutement augmenté (système multi-agents)",
-        "resume": "SaaS / Projet live de recrutement augmenté : multi-agents (7) pour analyse CV + simulation d’entretien + pipeline data end-to-end.",
+        "resume": "SaaS de recrutement augmenté par IA avec système multi-agents (7 agents), scoring multi-dimensionnel et détection de fraude. Projet central du mémoire de fin d'études (Bac+5).",
         "evaluation": {
           "pertinence": {
             "score": 10,
-            "justification": "Cœur du poste visé: 'système multi-agents (7 agents)', 'recrutement augmenté', scoring candidats, et pipeline data (ingestion→monitoring)."
+            "justification": "Projet parfaitement aligné avec le poste visé (Chef de Projet Data/IA, spécialiste systèmes multi-agents et recrutement tech). Couvre tous les aspects du profil : IA, multi-agents, recrutement, et impact business."
           },
           "complexite": {
-            "score": 8,
-            "justification": "Architecture multi-agents annoncée (CrewAI + LangGraph) + pipeline complet (parsing, stockage objet MinIO, PostgreSQL+MongoDB, orchestration Mage.ai). Pas de détails sur patterns de résilience, gestion d’état, évaluation offline/online."
+            "score": 9,
+            "justification": "Architecture complexe et bien pensée : orchestration de 7 agents (CrewAI, LangGraph), pipeline de données complet (ingestion, parsing, stockage objet, bases relationnelle + NoSQL), scoring multi-dimensionnel avec détection de fraude. Gestion de contraintes réelles (flux de données, concurrence)."
           },
           "stack": {
             "score": 8,
-            "justification": "Stack cohérente SaaS data/IA: React, FastAPI, PostgreSQL/MongoDB, MinIO, Metabase, Mage.ai, + frameworks agents. L’ensemble est moderne mais assez large (double DB relationnel/NoSQL + orchestration + observabilité) sans justification explicite."
+            "justification": "Stack moderne et cohérente : React.js (frontend), FastAPI (backend), PostgreSQL/MongoDB (bases de données), MinIO (stockage objet), Metabase (monitoring), Mage.ai (orchestration). Utilisation pertinente de CrewAI et LangGraph pour les agents. Pas de 'tech soup', mais manque de détails sur les outils de test/qualité."
           },
           "innovation": {
             "score": 8,
-            "justification": "Au-delà d’un wrapper RAG: scoring multi-dimensionnel pondéré (40/30/20/10) + 'détection de fraude automatisée' + 'simulation d’entretien dynamique'. Innovation plausible, mais le CV ne décrit pas la méthode de fraude (règles, ML, signaux) ni l’évaluation."
+            "justification": "Innovation réelle avec un système multi-agents appliqué au recrutement (simulation d'entretien dynamique, scoring comportemental/situationnel). Détection de fraude automatisée est un vrai plus. Pas un simple wrapper RAG ou tutoriel classique."
           },
           "impact": {
-            "score": 5,
-            "justification": "Aucun KPI chiffré (temps de recrutement, qualité shortlist, taux de conversion, coûts/latence). Projet 'live' mentionné, mais sans métriques d’adoption/usage."
+            "score": 6,
+            "justification": "Aucun chiffre concret fourni (ex : nombre d'utilisateurs, réduction du temps de recrutement, taux de fraude détecté). Mention d'un mémoire de fin d'études, mais pas de résultats mesurables en production. Crédibilité limitée sur l'impact réel."
           },
           "ownership": {
-            "score": 10,
-            "justification": "Ownership explicitement end-to-end: 'Pilotage de A à Z : Design Thinking, business plan, développement full-stack, déploiement' + mémoire de fin d’études sur le sujet."
+            "score": 9,
+            "justification": "Pilotage end-to-end : Design Thinking, business plan, développement full-stack, déploiement. Méthodologies affichées (mémoire de fin d'études, orchestration de sprints implicite). Preuve d'exécution complète."
           },
           "maturite": {
-            "score": 6,
-            "justification": "Mention de monitoring qualité via Metabase + orchestration Mage.ai. En revanche: pas de preuve de tests, CI/CD, sécurité, RGPD, gestion des prompts/versions, observabilité LLM (traces, coûts), SLA/latence, ou scalabilité."
+            "score": 7,
+            "justification": "Mention de monitoring qualité (Metabase) et orchestration (Mage.ai), mais pas de détails sur tests (unitaires, intégration), sécurité, RGPD, scaling, ou coût/latence. Pas de preuve d'utilisateurs réels (prototype ? MVP ?)."
           }
         },
         "points_forts": [
-          "Alignement parfait avec multi-agents + recrutement tech: 7 agents orchestrés et simulation d’entretien.",
-          "Vrai scope produit: full-stack + data pipeline + stockage objet + monitoring (Metabase) + orchestration (Mage.ai).",
-          "Ownership rare sur un projet IA: business plan + déploiement + projet live (donc contrainte produit réelle)."
+          "Architecture multi-agents bien conçue et adaptée au besoin (recrutement).",
+          "Scoring multi-dimensionnel et détection de fraude : valeur ajoutée métier claire.",
+          "Pilotage end-to-end avec méthodologies structurées (Design Thinking, business plan).",
+          "Stack technique cohérente et moderne, sans surcharge inutile."
         ],
         "points_vigilance": [
-          "Risque d’over-claim sur la 'détection de fraude' et la 'simulation dynamique' sans description de méthode ni métriques d’efficacité (FP/FN, protocoles d’évaluation).",
-          "Maturité production incomplète dans le CV: pas de mention de tests, CI/CD, sécurité, RGPD (données CV = sensibles), monitoring LLM (coût/latence), ni gestion des erreurs/timeout.",
-          "Complexité stack: PostgreSQL + MongoDB + MinIO + Mage + Metabase + CrewAI/LangGraph; il faut justifier les choix et la cohérence opérationnelle."
+          "Manque de chiffres concrets pour prouver l'impact (risque d'over-claiming sur l'efficacité).",
+          "Absence de détails sur la maturité en production (tests, sécurité, scaling, users réels).",
+          "Pas de mention de la gestion des coûts ou de la latence du système multi-agents."
         ],
-        "note_globale": 79,
-        "verdict_recruteur": "Projet le plus solide et le plus aligné: vraie construction agentique + pipeline data + produit SaaS. Techniquement crédible, mais je le considère 'production-lean': pour valider un niveau senior/CTO-like, il faut des preuves chiffrées (impact) et des éléments de qualité prod (sécurité/RGPD, tests, observabilité LLM, perf/coûts). À creuser en entretien."
+        "note_globale": 81,
+        "verdict_recruteur": "Projet phare du CV, idéal pour un poste de Chef de Projet Data/IA spécialisé en systèmes multi-agents. Démontre une maîtrise technique avancée et une vision business claire. À creuser en entretien sur les résultats concrets, la maturité en production, et les défis techniques rencontrés (ex : orchestration des agents, gestion des données)."
       },
       {
         "titre": "FounderOS - Dashboard tout-en-un pour fondateurs de startups",
-        "resume": "Side project / MVP produit: dashboard Next.js pour tâches founder (Lean Canvas, CRM lite, veille, finance, contenu) + module d’intelligence concurrentielle scoré.",
+        "resume": "Dashboard SaaS pour fondateurs de startups avec modules Lean Canvas, CRM Lite, veille stratégique, gestion financière, et intelligence concurrentielle (scoring automatisé). Side project.",
         "evaluation": {
           "pertinence": {
             "score": 5,
-            "justification": "Pertinent côté produit/PM et un peu GenAI (API Gemini), mais moins aligné sur multi-agents/RAG/recrutement/pipelines."
+            "justification": "Pertinence moyenne pour le poste visé. Le projet touche à l'IA (scoring automatisé) mais n'est pas centré sur les systèmes multi-agents ou le recrutement. Plus aligné avec un rôle de Product Owner ou de fondateur de startup."
           },
           "complexite": {
-            "score": 4,
-            "justification": "Le CV décrit des modules fonctionnels et un scoring concurrentiel, mais pas d’architecture IA (agents, RAG, ingestion), ni complexité backend/data. Semble surtout front + appels API."
+            "score": 6,
+            "justification": "Complexité technique présente mais limitée : dashboard full-stack avec modules variés, mais pas de mention de contraintes techniques fortes (ex : concurrence, flux de données massifs). Scoring automatisé (Health Score, SWOT) est un plus, mais pas de détails sur l'architecture sous-jacente."
           },
           "stack": {
             "score": 7,
-            "justification": "Next.js + TypeScript + Tailwind = stack moderne et cohérente. 'API Gemini' intégrée, mais absence d’info sur backend, persistance, auth, ou pipeline données."
+            "justification": "Stack moderne (Next.js, TypeScript, Tailwind) et cohérente pour un dashboard. Utilisation d'API Gemini pour l'IA, mais pas de preuve de personnalisation avancée (ex : fine-tuning, RAG). Pas de 'tech soup', mais stack classique pour un SaaS."
           },
           "innovation": {
-            "score": 6,
-            "justification": "Module d’intelligence concurrentielle avec 'Health Score', 'Radar 6 axes', SWOT intelligente: idée intéressante. Mais on ne voit pas ce qui est réellement automatisé (sources, ingestion, critères) vs simple prompting."
+            "score": 5,
+            "justification": "Innovation limitée : dashboard tout-en-un est un concept courant. Le scoring automatisé (SWOT, Health Score) est une valeur ajoutée, mais pas révolutionnaire. Pas de différenciation claire par rapport aux outils existants (ex : Notion, Airtable + plugins)."
           },
           "impact": {
-            "score": 2,
-            "justification": "Aucun chiffre (utilisateurs, adoption, gain de temps, taux d’activation), pas de preuve de projet live."
+            "score": 4,
+            "justification": "Aucun chiffre concret fourni (ex : nombre d'utilisateurs, amélioration de la productivité des fondateurs). Pas de preuve d'adoption ou de résultats mesurables. Risque de side project sans traction réelle."
           },
           "ownership": {
-            "score": 6,
-            "justification": "On suppose une réalisation personnelle (projet listé), mais contrairement à AIRH, pas de mention explicite de déploiement, pilotage A→Z, ou méthodes."
+            "score": 7,
+            "justification": "Développement full-stack et déploiement mentionnés, mais pas de détails sur le pilotage (ex : méthodologies, business plan). Moins de preuve d'exécution end-to-end que pour AIRH."
           },
           "maturite": {
-            "score": 3,
-            "justification": "Aucune mention de monitoring, tests, sécurité, contrôle coût/latence Gemini, ni gestion des données. Semble MVP/démo."
+            "score": 5,
+            "justification": "Pas de mention de monitoring, tests, sécurité, ou scaling. Stack moderne mais pas de preuve de maturité en production (ex : users réels, coût/latence). Probablement un MVP ou prototype."
           }
         },
         "points_forts": [
-          "Bonne culture produit: regrouper des besoins founders (canvas, CRM, veille, finance) dans un même outil.",
-          "Stack front moderne (Next.js/TS) et intégration GenAI (Gemini) utile pour des analyses structurées."
+          "Dashboard complet avec modules variés (CRM, veille, gestion financière).",
+          "Scoring automatisé (Health Score, SWOT) : valeur ajoutée pour les fondateurs.",
+          "Stack technique moderne et adaptée au besoin."
         ],
         "points_vigilance": [
-          "Projet peu probant pour évaluer la compétence 'multi-agents/RAG/pipeline' (pas décrit).",
-          "Innovation difficile à distinguer d’un 'prompt + UI' sans description de données, métriques, ou protocole d’évaluation.",
-          "Aucun signal de maturité production (auth, rôles, stockage, observabilité, coûts)."
+          "Pertinence limitée pour le poste visé (peu de lien avec les systèmes multi-agents ou le recrutement).",
+          "Manque de détails sur l'architecture technique et les contraintes gérées.",
+          "Aucun chiffre pour prouver l'impact ou l'adoption.",
+          "Risque de side project sans maturité en production."
         ],
-        "note_globale": 47,
-        "verdict_recruteur": "Bon projet produit/UI, mais techniquement trop peu étayé côté data/IA pour le poste visé. Je le vois comme un bonus (sens produit), pas comme une preuve de maîtrise agentique ou pipeline. À ne pas sur-vendre."
+        "note_globale": 56,
+        "verdict_recruteur": "Projet intéressant mais peu aligné avec le poste visé. Montre des compétences en développement full-stack et en intégration d'API, mais manque de profondeur technique et d'impact mesurable. À mentionner en entretien pour illustrer la polyvalence, mais pas un projet différenciant pour un rôle en Data/IA multi-agents."
       },
       {
         "titre": "Data Jobs - Moteur de recommandation d'emploi RAG",
-        "resume": "Projet IA / prototype RAG: scraping d’offres, vectorisation Pinecone, recommandation via LangChain + Groq, amélioration de pertinence annoncée.",
+        "resume": "Moteur de recommandation d'emploi basé sur RAG, avec scraping de +2 000 offres, vectorisation (Pinecone), et amélioration de la pertinence via Prompt Engineering. Projet en mode Scrum.",
         "evaluation": {
           "pertinence": {
             "score": 8,
-            "justification": "RAG + pipeline (scraping→vectorisation) appliqué à l’emploi tech (proche recrutement). Moins multi-agents mais très aligné GenAI/pipelines."
+            "justification": "Bonne pertinence pour le poste visé : projet Data/IA centré sur le recrutement (offres d'emploi tech). Moins aligné que AIRH sur les systèmes multi-agents, mais pertinent pour un rôle en Data/IA."
           },
           "complexite": {
-            "score": 6,
-            "justification": "Scraping Selenium + vector store Pinecone + LangChain + LLM Groq = pipeline RAG classique. Pas de mention d’ingestion robuste (dédup, scheduling), évaluation IR (precision@k), ni serving/monitoring."
+            "score": 7,
+            "justification": "Complexité technique présente : scraping (Selenium), vectorisation (Pinecone), RAG (LangChain + Groq), et Prompt Engineering itératif. Pas de mention de contraintes techniques fortes (ex : scaling, latence), mais pipeline complet."
           },
           "stack": {
-            "score": 7,
-            "justification": "Python + LangChain + Pinecone + Selenium + Groq: stack standard RAG. Cohérente, mais dépendante de services externes; pas d’info sur persistance, API, ou déploiement."
+            "score": 8,
+            "justification": "Stack moderne et adaptée : Python (LangChain), Pinecone (vector store), Groq (LLM), Selenium (scraping). Cohérente pour un moteur RAG, mais pas de preuve de personnalisation avancée (ex : fine-tuning, architecture distribuée)."
           },
           "innovation": {
-            "score": 5,
-            "justification": "Amélioration via 'Prompt Engineering itératif' = approche courante. Pas de signal d’innovation type reranking, hybrid search, feedback loop, ou évaluation systématique."
+            "score": 6,
+            "justification": "Innovation limitée : RAG est une approche courante pour les moteurs de recommandation. L'amélioration de +40% de pertinence via Prompt Engineering est un vrai plus, mais pas révolutionnaire. Pas de différenciation claire par rapport aux solutions existantes (ex : LinkedIn, Indeed)."
           },
           "impact": {
-            "score": 6,
-            "justification": "+2 000 offres scrapées et '+40% pertinence' annoncés. Mais la mesure n’est pas définie (metric, baseline, protocole, dataset de test), donc crédibilité partielle."
+            "score": 7,
+            "justification": "Chiffre concret fourni : +40% de pertinence des recommandations. Scraping de +2 000 offres est un bon volume. Pas de preuve d'adoption (users réels) ou d'impact business (ex : réduction du temps de recherche d'emploi)."
           },
           "ownership": {
-            "score": 7,
-            "justification": "Réalisation technique décrite + 'pilotage des sprints en tant que Scrum Master'. Ownership delivery/orga visible, mais pas explicitement end-to-end produit (déploiement, users)."
+            "score": 8,
+            "justification": "Pilotage des sprints en tant que Scrum Master : preuve de méthodologie agile. Développement end-to-end (scraping → RAG → recommandations). Pas de mention de business plan ou de déploiement en production."
           },
           "maturite": {
-            "score": 4,
-            "justification": "Pas de mention de monitoring, tests, gestion anti-bot/robustesse scraping, conformité (TOS scraping), ni optimisation coût/latence. On est sur un prototype solide."
+            "score": 5,
+            "justification": "Pas de mention de monitoring, tests, sécurité, ou scaling. Vector store (Pinecone) est un bon choix, mais pas de détails sur la gestion des coûts ou de la latence. Probablement un prototype ou MVP."
           }
         },
         "points_forts": [
-          "Bon cas d’usage RAG appliqué au recrutement: ingestion (scraping) + indexation (Pinecone) + recommandation.",
-          "Chiffres minimaux présents (+2 000 offres, +40% pertinence), ce qui est rare dans un CV.",
-          "Dimension delivery: rôle Scrum Master mentionné (capacité à structurer l’exécution)."
+          "Pipeline complet : scraping, vectorisation, RAG, Prompt Engineering.",
+          "Amélioration mesurable de la pertinence (+40%) : preuve d'efficacité.",
+          "Pilotage en mode Scrum : méthodologie agile appliquée.",
+          "Stack technique adaptée et moderne pour un moteur RAG."
         ],
         "points_vigilance": [
-          "Le '+40% pertinence' est invérifiable sans métrique (NDCG@k, precision@k, taux de clic) ni protocole d’évaluation; à challenger en entretien.",
-          "RAG très 'standard LangChain + vector DB' sans éléments avancés (reranker, hybrid search, chunking strategy, eval harness, feedback loop).",
-          "Maturité et conformité: scraping Selenium sans mention de robustesse, légal/TOS, ni industrialisation (scheduler, retries, monitoring)."
+          "Innovation limitée (approche RAG classique).",
+          "Manque de détails sur la maturité en production (tests, monitoring, scaling).",
+          "Pas de preuve d'adoption par des users réels ou d'impact business.",
+          "Pertinence légèrement inférieure à AIRH pour le poste visé (pas de système multi-agents)."
         ],
-        "note_globale": 61,
-        "verdict_recruteur": "Bon projet RAG pragmatique et utile, mais techniquement assez standard. Je le valorise comme preuve de compréhension des briques RAG et d’un mini-pipeline, pas comme démonstration d’architecture avancée. Si le candidat peut expliquer clairement la métrique du '+40%' et une stratégie d’industrialisation, la note remonte nettement."
+        "note_globale": 70,
+        "verdict_recruteur": "Bon projet pour illustrer des compétences en Data/IA et en recrutement. Démontre une maîtrise des pipelines RAG et du Prompt Engineering, avec un résultat mesurable (+40% de pertinence). À valoriser en entretien pour un rôle en Data/IA, mais moins différenciant qu'AIRH. À creuser sur la maturité en production et les défis techniques (ex : gestion des données scrapées, coût du vector store)."
       }
     ],
-    "coherence_globale_projets": {},
-    "conseils_amelioration": [
-      "Sécuriser la lisibilité ATS : sortir d’une mise en page en colonnes et garantir un flux linéaire (les sections LIENS/COMPÉTENCES ne doivent pas apparaître au milieu de l’EXPERIENCE dans l’extraction texte). Si vous gardez les ancres, ajoutez aussi les URL en clair (ex. linkedin.com/in/… ; airh.online ; founderdashboard.vercel.app).",
-      "Ajouter 6–10 métriques techniques ‘signature’ sur Enedis + AIRH : temps d’exécution avant/après des flows Dataiku, volume de données, temps de réponse RAG, coût par requête, adoption (utilisateurs actifs), fiabilité (taux d’échec), et côté AIRH latence multi-agents + coût inference + taux de succès des runs.",
-      "Nettoyer la section compétences : soit retirer les outils non prouvés, soit ajouter une ligne de preuve par outil (ex. ‘DBT : modèle X, 12 tests, docs’, ‘Docker : image FastAPI, docker-compose’, ‘CI/CD : GitHub Actions avec lint+tests+deploy’). Objectif : zéro skill “hors contexte”.",
-      "Sur AIRH, expliciter 3–5 décisions d’architecture et leurs compromis (ex. choix Postgres vs Mongo, stockage MinIO, orchestration Mage.ai, stratégie d’indexation/search, observabilité/trace Langfuse) + ce que vous feriez différemment à l’échelle (10k CV/jour, multi-tenant, files/queues)."
-    ]
+    "coherence_globale_projets": {
+      "score": 8,
+      "details": "Les projets sont globalement cohérents avec le poste visé (Chef de Projet Data/IA, spécialiste systèmes multi-agents et recrutement tech). AIRH est le projet phare, parfaitement aligné et techniquement solide. Data Jobs est un bon complément, tandis que FounderOS est moins pertinent mais montre une polyvalence. La cohérence est renforcée par l'accent sur l'IA, le recrutement, et les méthodologies agiles. Points à améliorer : prouver l'impact concret de AIRH et la maturité en production des projets."
+    },
+    "conseils_amelioration": []
   }
 }
