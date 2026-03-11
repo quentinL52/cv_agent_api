@@ -50,13 +50,13 @@ class CVAgentOrchestrator:
         return data.get("metiers", [])
 
     def _create_agents(self):
-        def make_agent(name, llm_override=None):
+        def make_agent(name, llm_override=None, max_iter_override=1):
             return Agent(
                 config=self.agents_config[name],
                 llm=llm_override or self.llm,
                 allow_delegation=False,
                 verbose=True,
-                max_iter=1,
+                max_iter=max_iter_override,
                 respect_context_window=True,
             )
 
@@ -72,7 +72,7 @@ class CVAgentOrchestrator:
 
         self.header_analyzer = make_agent("header_analyzer")
         self.metier_matcher = make_agent("metier_matcher")
-        self.cv_quality_checker = make_agent("cv_quality_checker", llm_override=self.big_llm)
+        self.cv_quality_checker = make_agent("cv_quality_checker", llm_override=self.big_llm, max_iter_override=2)
         self.project_analyzer = make_agent("project_analyzer", llm_override=self.big_llm)
 
     # ──────────────────────────────────────────────
@@ -164,7 +164,7 @@ class CVAgentOrchestrator:
                 "current_date": datetime.now().strftime("%Y-%m-%d"),
                 "header": safe_header,
                 "page_count": page_count,
-                "cv_full_text": cv_full_text[:8000],
+                "cv_full_text": cv_full_text[:10000],
                 "cv_raw_start": safe_cv_raw,
             }),
             ("metier_matching_task", self.metier_matcher, {
@@ -189,8 +189,12 @@ class CVAgentOrchestrator:
         results_map = {}
         for key, result in zip(keys, results_list):
             if isinstance(result, Exception):
-                logger.error(f"Task '{key}' failed: {result}")
+                logger.error(f"Task '{key}' failed with exception: {result}")
             else:
+                # Log brut pour debug production — essentiel pour tracer les réponses tronquées
+                raw_output = result.raw if hasattr(result, "raw") else str(result)
+                if key == "cv_quality_task":
+                    logger.info(f"[DEBUG] cv_quality_task raw output (first 500 chars): {raw_output[:500]}")
                 results_map[key] = result
 
         return self._build_final_json(results_map)
@@ -252,6 +256,12 @@ class CVAgentOrchestrator:
         header_data = get_parsed("poste_visé_task", {"poste_vise": "Non identifié", "confiance": 0})
         metier_data = get_parsed("metier_matching_task", {"postes_recommandes": []})
         quality_data = get_parsed("cv_quality_task", {"score_global": 0, "red_flags": [], "conseils_prioritaires": []})
+
+        # Validation de structure : qualite_cv doit être un dict avec les clés attendues
+        if not isinstance(quality_data, dict) or "score_global" not in quality_data:
+            logger.error(f"[CV_QUALITY] Structure invalide reçue (type={type(quality_data).__name__}). "
+                         f"Aperçu: {str(quality_data)[:300]}. Utilisation du fallback.")
+            quality_data = {"score_global": 0, "red_flags": [], "conseils_prioritaires": []}
         project_data = get_parsed("project_analysis_task", {"analyse_projets": []})
 
         conseils = []

@@ -70,6 +70,7 @@ def get_big_llm():
     return LLM(
         model="mistral/mistral-large-latest",
         temperature=0.0,
+        max_tokens=16384,
         api_key=MISTRAL_API_KEY,
     )
 

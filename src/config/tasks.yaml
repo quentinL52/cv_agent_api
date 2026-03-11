@@ -332,17 +332,18 @@ cv_quality_task:
     CV COMPLET (texte Markdown) : "{cv_full_text}"
     TEXTE BRUT DU CV (première page, pour détecter les URLs et liens) : "{cv_raw_start}"
   expected_output: >
+    IMPORTANT : Retourne UNIQUEMENT un JSON valide sans aucun texte avant ou après. Le JSON DOIT contenir la clé "score_global".
     JSON : {{
       "score_global": 72,
       "compatibilite_ats": {{ "score": 80, "details": "..." }},
-      "quantification_resultats": {{ "score": 50, "details": "...", "metriques_suggerees": ["Préciser le temps de réponse des dashboards PowerBI", "Quantifier le volume de données traité par les flows Dataiku"] }},
-      "structure_lisibilite": {{ "score": 85, "details": "...", "structuration_competences": "Compétences bien catégorisées par domaine" }},
+      "quantification_resultats": {{ "score": 50, "details": "...", "metriques_suggerees": ["..."] }},
+      "structure_lisibilite": {{ "score": 85, "details": "..." }},
       "presentation_projets": {{ "score": 70, "details": "..." }},
-      "preuves_competences": {{ "score": 65, "details": "...", "skills_sans_preuve": ["skill_hors_contexte_uniquement"], "liens_detectes": ["github.com/user", "linkedin.com/in/user"] }},
+      "preuves_competences": {{ "score": 65, "details": "...", "skills_sans_preuve": ["..."], "liens_detectes": ["..."] }},
       "red_flags": ["..."],
       "points_forts": ["..."],
-      "conseils_prioritaires": ["Conseil spécifique et actionnable 1", "Conseil spécifique 2"],
-      "adaptation_seniorite": "Analyse adaptée au profil confirmé..."
+      "conseils_prioritaires": ["..."],
+      "adaptation_seniorite": "..."
     }}
 
 project_analysis_task:
